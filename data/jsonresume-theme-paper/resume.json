@@ -1,0 +1,139 @@
+{
+  "basics": {
+    "name": "Ian Campbell",
+    "label": "Full-Stack Developer",
+    "email": "ian.campbell.92@gmail.com",
+    "phone": "+1.970.560.2564",
+    "website": "http://www.ianlairdcampbell.com",
+    "location": {
+      "address": "1230 Emerson St",
+      "postalCode": "CA 94301",
+      "city": "Palo Alto",
+      "countryCode": "US",
+      "region": "California"
+    },
+    "profiles": [
+      {
+        "network": "Github",
+        "username": "Iancam",
+        "url": "github.com/Iancam"
+      }
+    ]
+  },
+  "skills": [
+    {
+      "name": "JavaScript"
+    },
+    {
+      "name": "React"
+    },
+    {
+      "name": "Python"
+    },
+    {
+      "name": "Java"
+    },
+    {
+      "name": "Graphql"
+    },
+    {
+      "name": "Swift"
+    },
+    {
+      "name": "Ruby On Rails"
+    },
+    {
+      "name": "SQL"
+    }
+  ],
+  "education": [
+    {
+      "institution": "Stanford University",
+      "area": "Science, Technology and Society",
+      "studyType": "Bachelor of Science",
+      "startDate": "2010-9-20",
+      "endDate": "2015-11-11"
+    }
+  ],
+  "work": [
+    {
+      "position": "Private Tutor for Computer Science",
+      "company": "Wyzant",
+      "website": "https://wyzant.com",
+      "highlights": [
+        "Achieved a minimum grade of 90% for all school assignments",
+        "Systematized detection and correction of top 3 student motivation challenges",
+        "Created curricula for first-time programmers across many popular programming languages"
+      ],
+      "startDate": "2014-9-20"
+    },
+    {
+      "position": "Full-Stack Developer",
+      "company": "Tunxis Booking",
+      "website": "https://www.tunxisgolf.com/",
+      "highlights": [
+        "eliminated developer-facing redux reducers and low-level network requests by standardizing redux actions, and creating a reducer factory",
+        "streamlined development cycles by introducing scrum with burndown charts",
+        "designed and implemented company's RESTful api with rails",
+        "delivered a React SPA front-end based on UI mockups"
+      ],
+      "startDate": "2017-10-1",
+      "endDate": "2018-7-1"
+    },
+    {
+      "position": "Software Architect",
+      "company": "Mahindra Genze",
+      "website": "https://www.genze.com/",
+      "highlights": [
+        "Architected and documented a redesign of the central REST API which supported external dealers and fleet managers and internal sales and support operations",
+        "Enabled business operations through a redesign of the administration component of the internal website",
+        "Improved system capacity for high throughput data by transitioning to a microservice architecture, leveraging an open source API gateway service, and a column-store database",
+        "Optimized the existing mobile app API for network latency, reducing the number of network calls"
+      ],
+      "startDate": "2016-9-15",
+      "endDate": "2016-12-19"
+    },
+    {
+      "position": "Software Development Intern",
+      "company": "Mahindra Genze",
+      "highlights": [
+        "Created a prototype bike sharing IOS app, which was used to secure google as a potential customer",
+        "Rapidly designed and implemented an interactive information display used at Costco road-shows across the country."
+      ],
+      "startDate": "2016-6-16",
+      "endDate": "2016-9-15"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Codocil",
+      "website": "https://www.npmjs.com/package/codocil",
+      "highlights": [
+        "productivity tool that shaves minutes off of daily start-up time for JavaScript projects.",
+        "Create a default codocil project, and in one command, open a server and git window in iterm and the given project in vscode."
+      ],
+      "startDate": "2018-12-20"
+    },
+    {
+      "title": "Sales Distribution App",
+      "website": null,
+      "highlights": [
+        "Written with React, Node.js, Ruby on Rails libraries",
+        "Collaborated with Curriculum Associates Sales Operations Team to create a web-based tool",
+        "Designed to collect and export product end user data used for sales reporting from sales representatives and customers"
+      ],
+      "startDate": "2016-2-20",
+      "endDate": "2016-3-15"
+    },
+    {
+      "title": "Food Management App",
+      "highlights": [
+        "Developed a food management app for a dormitory using Node.js, Express.js, and Mongodb on a team of 3",
+        "Designed the product using A/B testing and user interviews for guidance, while producing a working app at the end of each week",
+        "Features included browsing and requesting new items, and suggestions for recipes based on the contents of the pantry"
+      ],
+      "startDate": "2014-1-3",
+      "endDate": "2014-3-25"
+    }
+  ]
+}

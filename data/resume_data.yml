@@ -1,0 +1,211 @@
+- header:
+    name: Ian Campbell
+    email: iancam92@icloud.com
+    phone: +1.970.560.2564
+    website: http://www.github.com/iancam
+  sections:
+    - title: Education
+      details:
+        - title: Bachelor of Science in Science, Technology and Society
+          dateRanges:
+            - start:
+                date:
+                  year: 2010
+                  month: 9
+                  date: 20
+              end:
+                date:
+                  year: 2015
+                  month: 11
+                  date: 11
+          location: Stanford University, Palo Alto, California
+          responsibilities: null
+    - title: Work Experience
+      details:
+        - title: Private Tutor for Computer Science
+          dateRanges:
+            - start:
+                date:
+                  year: 2014
+                  month: 9
+                  date: 20
+              end:
+                date:
+                  present: Present
+          location: Palo Alto, California
+          responsibilities:
+            list:
+              - responsibility:
+                  Created and taught lesson plans in IOS app development,
+                  including server-side implementation using Python's Flask
+                  Framework
+              - responsibility: Taught introductory version control using Git and Github
+              - responsibility:
+                  Taught the AP Computer Science curriculum, focusing on
+                  algorithms and the Java language
+              - responsibility:
+                  Created curricula for first-time programmers using Java and
+                  Python
+        - title: Software Architect
+          dateRanges:
+            - start:
+                date:
+                  year: 2016
+                  month: 9
+                  date: 15
+              end:
+                date:
+                  year: 2016
+                  month: 12
+                  date: 19
+          location: Mahindra Genze, Fremont, California
+          responsibilities:
+            list:
+              - responsibility:
+                  using RESTful principles, designed the outward-facing API used
+                  by independent bike and scooter dealers to manage fleets of
+                  vehicles
+              - responsibility:
+                  using OpenAPISpec (Swagger), wrote a developer portal that
+                  allowed customers to test the inputs and outputs of our API
+                  with the associated documentation easily accessible
+              - responsibility:
+                  Implemented the administration component of the internal
+                  website using the new API, with the back-end server written in
+                  Java's Play framework, and the front-end in React.js/Node.js
+              - responsibility: Deployed Tyk as an API gateway microservice
+              - responsibility:
+                  Optimized the existing mobile app API for network latency,
+                  reducing the number of network calls
+              - responsibility:
+                  Wrote the specifications for version 3 of a mobile app used by
+                  owners of the Genze electric scooter or bicycle to run
+                  diagnostics, track fitness, and meet other riders. Used JIRA
+                  user stories for each of the new features, and wireframes in
+                  Balsalmiq where useful
+        - title: Software Development Intern
+          dateRanges:
+            - start:
+                date:
+                  year: 2016
+                  month: 6
+                  date: 16
+              end:
+                date:
+                  year: 2016
+                  month: 9
+                  date: 15
+          location: Mahindra Genze, Fremont, California
+          responsibilities:
+            list:
+              - responsibility:
+                  Worked with two interns in the full design and implementation
+                  of a bike sharing IOS app, creating several prototypes and
+                  conducting user tests and stakeholder interviews to guide
+                  design
+              - responsibility:
+                  Rapidly designed and implemented a React.js application that
+                  served as an interactive information display at about 7 Costco
+                  road-shows.
+        - title: Expedition Coordinator
+          dateRanges:
+            - date:
+                season:
+                  name: "Summers "
+                  years:
+                    - "2010"
+                    - "2011"
+                    - "2015"
+          location: Colvig Silver Camps, Durango, Colorado
+          responsibilities:
+            list:
+              - responsibility:
+                  Ordered, prepared, organized, and distributed food and gear
+                  for 100+ campers ages 7 to 17 going on 2 to 10-day-long trips
+                  with a fleet of 12 vehicles
+              - responsibility:
+                  Developed and documented a distribution system to reduce food
+                  waste and manage nutritional value, allergies, weight, product
+                  decay, and health standards
+        - title: Web Design Intern
+          dateRanges:
+            - start:
+                date:
+                  year: 2013
+                  month: 6
+                  date: 10
+              end:
+                date:
+                  year: 2013
+                  month: 9
+                  date: 20
+          location: Stanford Vaden Health Center, Palo Alto, California
+          responsibilities:
+            list:
+              - responsibility:
+                  Prototyped web-based timeline visualization of student events
+                  with the d3.js library by incorporating design constraints
+                  from student organization leaders
+              - responsibility:
+                  Deployed an interactive WordPress website including an event
+                  calendar and a section for health articles for a student
+                  health group
+    - title: Projects
+      details:
+        - title: Sales Distribution App
+          dateRanges:
+            - start:
+                date:
+                  year: 2016
+                  month: 2
+                  date: 20
+              end:
+                date:
+                  year: 2016
+                  month: 3
+                  date: 15
+          location: Curriculum Associates, North Billerica, Massachusetts
+          responsibilities:
+            list:
+              - responsibility: Written with React, Node.js, Ruby on Rails libraries
+              - responsibility:
+                  Collaborated with Curriculum Associates Sales Operations Team
+                  to create a web-based tool
+              - responsibility:
+                  Designed to collect and export product end user data used for
+                  sales reporting from sales representatives and customers
+        - title: Food Management App
+          dateRanges:
+            - start:
+                date:
+                  year: 2014
+                  month: 1
+                  date: 3
+              end:
+                date:
+                  year: 2014
+                  month: 3
+                  date: 25
+          location: Human Computer Interaction CS147, Stanford University
+          responsibilities:
+            list:
+              - responsibility:
+                  Developed a food management app for a dormitory using Node.js,
+                  Express.js, and Mongodb on a team of 3
+              - responsibility:
+                  "Designed the product using A/B testing and user interviews
+                  for guidance, while producing a working app at the end of each
+                  week "
+              - responsibility:
+                  Features included browsing and requesting new items,
+                  and suggestions for recipes based on the contents of the
+                  pantry
+    - title: Relevant Skills
+      details: |
+        Python,
+        Swift,
+        Javascript,
+        React,
+        Ruby On Rails,
+        SQL,
+        Microsoft Access

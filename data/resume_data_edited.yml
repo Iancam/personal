@@ -1,0 +1,147 @@
+- header:
+    name: Ian Campbell
+    label: Full-Stack Developer
+    location:
+      address: 1230 Emerson St
+      postalCode: CA 94301
+      city: Palo Alto
+      countryCode: US
+      region: California
+    email: ian.campbell.92@gmail.com
+    phone: +1.970.560.2564
+    website: http://www.ianlairdcampbell.com
+    profiles:
+      - network: Github
+        username: Iancam
+        url: github.com/Iancam
+  sections:
+    - title: Skills
+      details: |
+        JavaScript,
+        React,
+        Python,
+        Java,
+        Graphql,
+        Swift,
+        Ruby On Rails,
+        SQL
+    - title: Education
+      details:
+        - title: Bachelor of Science in Science, Technology and Society
+          dateRanges:
+            - start:
+                year: 2010
+                month: 9
+                date: 20
+              end:
+                year: 2015
+                month: 11
+                date: 11
+          location: Stanford University, Palo Alto, California
+          responsibilities: null
+    - title: Work Experience
+      details:
+        - title: Private Tutor for Computer Science, Wyzant
+          dateRanges:
+            - start:
+                year: 2014
+                month: 9
+                date: 20
+          location: Palo Alto, California
+          website: https://wyzant.com
+          responsibilities:
+            - Achieved a minimum grade of 90% for all school assignments
+            - Systematized detection and correction of top 3 student motivation challenges
+            - Created curricula for first-time programmers across many popular programming languages
+        - title: Full-Stack Developer, Tunxis Booking
+          dateRanges:
+            - start: { year: 2017, month: 10, date: 01 }
+              end: { year: 2018, month: 07, date: 01 }
+          location: Farmington, CT (Remote)
+          website: https://www.tunxisgolf.com/
+          responsibilities:
+            - eliminated developer-facing redux reducers and low-level network requests by standardizing redux actions, and creating a reducer factory
+            - streamlined development cycles by introducing scrum with burndown charts
+            - designed and implemented company's RESTful api with rails
+            - delivered a React SPA front-end based on UI mockups
+        - title: Software Architect, Mahindra Genze
+          dateRanges:
+            - start:
+                year: 2016
+                month: 9
+                date: 15
+              end:
+                year: 2016
+                month: 12
+                date: 19
+          location: Mahindra Genze, Fremont, California
+          website: https://www.genze.com/
+          responsibilities:
+            - Architected and documented a redesign of the central REST API which supported external dealers and fleet managers and internal sales and support operations
+            - Enabled business operations through a redesign of the administration component of the internal website
+            - Improved system capacity for high throughput data by transitioning to a microservice architecture, leveraging an open source API gateway service, and a column-store database
+            - Optimized the existing mobile app API for network latency, reducing the number of network calls
+        - title: Software Development Intern, Mahindra Genze
+          dateRanges:
+            - start:
+                year: 2016
+                month: 6
+                date: 16
+              end:
+                year: 2016
+                month: 9
+                date: 15
+          location: Mahindra Genze, Fremont, California
+          responsibilities:
+            - Created a prototype bike sharing IOS app, which was used to secure google as a potential customer
+            - Rapidly designed and implemented an interactive information display used at Costco road-shows across the country.
+    - title: Projects
+      details:
+        - title: Codocil
+          dateRanges:
+            - start:
+                year: 2018
+                month: 12
+                date: 20
+          website: https://www.npmjs.com/package/codocil
+          responsibilities:
+            - productivity tool that shaves minutes off of daily start-up time for JavaScript projects.
+            - Create a default codocil project, and in one command, open a server and git window in iterm and the given project in vscode.
+        - title: Sales Distribution App
+          dateRanges:
+            - start:
+                year: 2016
+                month: 2
+                date: 20
+              end:
+                year: 2016
+                month: 3
+                date: 15
+          website:
+          location: Curriculum Associates, North Billerica, Massachusetts
+          responsibilities:
+            - Written with React, Node.js, Ruby on Rails libraries
+            - Collaborated with Curriculum Associates Sales Operations Team
+              to create a web-based tool
+            - Designed to collect and export product end user data used for
+              sales reporting from sales representatives and customers
+        - title: Food Management App
+          dateRanges:
+            - start:
+                year: 2014
+                month: 1
+                date: 3
+              end:
+                year: 2014
+                month: 3
+                date: 25
+          location: Human Computer Interaction CS147, Stanford University
+          responsibilities:
+            - Developed a food management app for a dormitory using Node.js,
+              Express.js, and Mongodb on a team of 3
+            - Designed the product using A/B testing and user interviews
+              for guidance, while producing a working app at the end of each
+              week
+            - Features included browsing and requesting new items,
+              and suggestions for recipes based on the contents of the
+              pantry
