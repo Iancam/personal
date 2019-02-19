@@ -1,13 +1,14 @@
 import Link from "next/link";
+import Navigation from "../components/Navigation";
 const Index = () => (
-  <div>
-    <Link href="/about">
-      <a>About Page</a>
-    </Link>
+  <>
+    <Navigation />
     <div>
-      <p>Hello Next.js</p>
+      <div>
+        <p>Hello Next.js</p>
+      </div>
     </div>
-  </div>
+  </>
 );
 
 export default Index;
