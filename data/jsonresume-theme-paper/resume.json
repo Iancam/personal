@@ -28,22 +28,23 @@
       "name": "React"
     },
     {
-      "name": "Python"
+      "name": "Java"
     },
     {
-      "name": "Java"
+      "name": "SQL"
     },
     {
       "name": "Graphql"
     },
     {
-      "name": "Swift"
-    },
-    {
       "name": "Ruby On Rails"
     },
+
     {
-      "name": "SQL"
+      "name": "Python"
+    },
+    {
+      "name": "Swift"
     }
   ],
   "education": [

@@ -1,35 +1,34 @@
-body, html {
-  padding-top:2.5em;
-  margin:0;
-  background-color:#fafafa;
+body,
+html {
+  padding-top: 2.5em;
+  margin: 0;
+  background-color: #fafafa;
 }
 
 .note {
-  display:block;
+  display: block;
   position: absolute;
-  top:10px;
-  left:10px;
+  top: 10px;
+  left: 10px;
 
   font-family: "Open Sans";
   font-size: 0.6em;
 }
 
 .new {
-  background-color: #81C784;
+  background-color: #81c784;
 
   border: 1px solid #757575;
   padding: 1px;
   border-radius: 4px;
-
 }
 
 /* Header */
 
 header {
-  width:100%;
+  width: 100%;
   vertical-align: middle;
   text-align: center;
- 
 }
 
 .header-content {
@@ -38,25 +37,24 @@ header {
 
 .pic {
   margin: 0 auto;
-  margin-top:-2.5em;
-  
-  border-radius:10em;
-  height:4em;
-  width:4em;
-  
+  margin-top: -2.5em;
+
+  border-radius: 10em;
+  height: 4em;
+  width: 4em;
+
   border: 2px solid #e0e0e0;
-  transition : all 0.5s linear;
-  
+  transition: all 0.5s linear;
 }
 
 @-webkit-keyframes wiggle {
-  0%   {
+  0% {
     transform: rotate(0deg);
   }
-  25%  {
+  25% {
     transform: rotate(-30deg);
   }
-  50%  {
+  50% {
     transform: rotate(15deg);
   }
   100% {
@@ -67,35 +65,35 @@ header {
 .pic:hover {
   /*Webkit fix*/
   -webkit-transform: translateZ(0);
-  
-  cursor:pointer;
-  
+
+  cursor: pointer;
+
   -webkit-animation: wiggle 0.7s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
 .header-text {
-  margin-top:0.5em;
-  margin-left:1em;
+  margin-top: 0.5em;
+  margin-left: 1em;
 }
 
 header p {
-  text-align:center;
+  text-align: center;
   font-family: "Merriweather";
-  
-  margin:0;
-  
+
+  margin: 0;
+
   color: #212121;
 }
 
 .first-name {
-   font-size: 1.05em;
+  font-size: 1.05em;
 }
 
 .subtitle {
   font-family: "Merriweather";
-  padding-top:.3em;
-  font-size:0.55em;
-  font-weight:500;
+  padding-top: 0.3em;
+  font-size: 0.55em;
+  font-weight: 500;
   color: #424242;
 }
 
@@ -103,38 +101,38 @@ header p {
 
 .paper {
   margin: 0 auto;
-  margin-bottom:1em;
-  
-  background-color:white;
-  width:60%;
-  
-  padding:0.5em 0 0.5em 0;
-  
+  margin-bottom: 1em;
+
+  background-color: white;
+  width: 60%;
+
+  padding: 0.5em 0 0.5em 0;
+
   border-top: 1px solid #e0e0e0;
   border-left: 1px solid #e0e0e0;
   border-right: 1px solid #e0e0e0;
   border-bottom: 3px solid #e0e0e0;
-  border-radius:3px;
+  border-radius: 3px;
 }
 
-@media(max-width:992px) {
+@media (max-width: 992px) {
   .paper {
-    width:80%;
+    width: 80%;
   }
 }
 
 /* Content Part */
 
 .content-wrapper {
-  padding-right:7.25%;
+  padding-right: 7.25%;
 }
 
 .content {
-  display:table;
-  width:100%;
-  
-  padding-top:1.5em;
-  
+  display: table;
+  width: 100%;
+
+  padding-top: 1.5em;
+
   /*border-top: 1px solid #eeeeee;*/
 }
 
@@ -143,138 +141,140 @@ header p {
 }
 
 body > div > article > div > section:last-child {
-  padding-bottom:1.5em;
+  padding-bottom: 1.5em;
 }
 
 .row {
-    display:table-row;
+  display: table-row;
 }
 .row div {
-    display:table-cell;
+  display: table-cell;
 }
 
 .content-cat {
   font-family: "Merriweather";
-  font-variant:small-caps;
-  font-weight:300;
+  font-variant: small-caps;
+  font-weight: 300;
   letter-spacing: 1px;
-  
-  color: #212121;
-  
-  font-size:0.975em;
-  
-  text-align:center;
-  vertical-align:middle;
 
-  padding-left:6.66%;
-  width:30%;
+  color: #212121;
+
+  font-size: 0.975em;
+
+  text-align: center;
+  vertical-align: middle;
+
+  padding-left: 6.66%;
+  width: 30%;
 }
 
 .content-cat p {
-  font-size:0.55em;
-  font-weight:600;
-  
-  margin-bottom:0;
+  font-size: 0.55em;
+  font-weight: 600;
+
+  margin-bottom: 0;
 }
 
 .content-text {
-  border-left:1px solid #e0e0e0;
+  border-left: 1px solid #e0e0e0;
   transition: border 0.66s ease-in;
 }
 
 .big-text {
-  vertical-align:top;
+  vertical-align: top;
 }
 
 .content-text ul {
-  padding:0;
-  margin:0;
-  margin-top:0.15em;
-  
-  width:85%;
-  margin-left:1.5em;
+  padding: 0;
+  margin: 0;
+  margin-top: 0.15em;
+
+  width: 85%;
+  margin-left: 1.5em;
 }
 
 .content-text ul:last-child {
-  margin-bottom:0.5em;
+  margin-bottom: 0.5em;
 }
 
 .content-text ul li {
   font-family: "Open Sans";
-  font-size:0.7em;
-  
-  display:inline-block;
-  
+  font-size: 0.7em;
+
+  display: inline-block;
 }
 
 .content-text ul li:first-child {
-  width:35%;
-  
+  width: 35%;
+
   color: #424242;
-  
-  font-weight:600;
+
+  font-weight: 600;
 }
 
-.content-text ul li a, div.content-text.work-listing.education-listing > p > strong > a {
+.content-text ul li a,
+div.content-text.work-listing.education-listing > p > strong > a {
   text-decoration: none;
   color: #0277bd;
 }
 
 .content-text ul li a:hover {
-  color:#4fc3f7;
+  color: #4fc3f7;
 }
 
 .work-listing p {
   font-family: "Open Sans";
-  font-size:0.7em;
-  
+  font-size: 0.7em;
+
   color: #424242;
-  
-  margin-left:2em;
-  margin-top:0.45em;
+
+  margin-left: 2em;
+  margin-top: 0.45em;
   margin-bottom: 0.45em;
 }
 
 div.content-text.work-listing.education-listing > p:nth-child(2) {
-  margin-top:0.25em;
+  margin-top: 0.25em;
 }
 
 .work-listing .highlight {
   font-family: "Open Sans";
-  font-size:0.7em;
-  font-weight:400;
-  
+  font-size: 0.7em;
+  font-weight: 400;
+
   color: #424242;
-  
-  margin-left:3.25em;
-  padding-left:0.5em;
-  
-  border-left:1px solid #e0e0e0;
-  
+
+  margin-left: 3.25em;
+  padding-left: 0.5em;
+
+  border-left: 1px solid #e0e0e0;
 }
 
 .education-listing > .heading {
-  font-weight:600;
-  
-  margin-top:0.75em;
-  margin-left:2em;
+  font-weight: 600;
+
+  margin-top: 0.75em;
+  margin-left: 2em;
 }
 
 .education-listing > .highlight {
-  margin-left:3.25em;
+  margin-left: 3.25em;
 }
 
 .highlight {
-  transition: border .33s ease-in;
+  transition: border 0.33s ease-in;
+  text-transform: capitalize;
 }
 
-.profiles-listing ul li, .profiles-listing ul li:first-child {
-  width:32%;
+.profiles-listing ul li,
+.profiles-listing ul li:first-child {
+  width: 32%;
   font-weight: normal;
 }
 
-.work-content, .education-content {
-  padding-top: .75em;
+.work-content,
+.education-content {
+  padding-top: 0.75em;
 }
 
 section.content.education-content > div > div.content-cat {
@@ -283,8 +283,8 @@ section.content.education-content > div > div.content-cat {
 
 div.content-text.skills-listing > p {
   font-family: "Open Sans";
-  font-size:0.7em;
-  font-weight:400;
+  font-size: 0.7em;
+  font-weight: 400;
 
   margin-left: 2em;
   margin-top: 0.45em;
@@ -292,16 +292,17 @@ div.content-text.skills-listing > p {
 }
 
 div.content-text.skills-listing > p > {
-  color:#212121;
+  color: #212121;
 }
 
 @media screen and (max-width: 600px) {
-  body, html {
+  body,
+  html {
     padding-top: 30px;
   }
 
   .paper {
-    width:95%;
+    width: 95%;
   }
 
   .row div {
@@ -319,7 +320,7 @@ div.content-text.skills-listing > p > {
   .content-text ul li:first-child {
     width: 100%;
   }
-  
+
   .education-listing > .highlight {
     margin-left: 30px;
   }
