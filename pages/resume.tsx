@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import Head from "next/head";
 import Navigation from "../components/Navigation";
 import resumeData from "../static/resume.json";
-
+import { singular } from "pluralize";
 type content = {
   skills: skill[];
   education: education[];
@@ -25,6 +25,7 @@ type dates = {
   endDate?: string;
 };
 type location = {
+  type: "location";
   address: string;
   postalCode: string;
   city: string;
@@ -64,6 +65,12 @@ type frontMatter = {
   }[];
 };
 
+type profile = {
+  network: string;
+  url: string;
+  username: string;
+};
+
 interface dtToJSX {
   [s: string]: {
     [s: string]: (t: any) => JSX.Element;
@@ -88,7 +95,7 @@ const l3 = (header: supportedType, detail: supportedType, index?: number) => {
               <a href={website}>{company}:</a>
             </strong>
           ) : (
-            <strong>{{ company }}:</strong>
+            <strong>{company}:</strong>
           )}
         </Fragment>
       ),
@@ -122,12 +129,12 @@ const l3 = (header: supportedType, detail: supportedType, index?: number) => {
 
   const header_fx = (header: supportedType, index?: number) => (
     <p className="heading" style={index === 0 ? {} : { marginTop: "2.4em" }}>
-      {JSON.stringify(header)}
+      {getForDataType(dataTypes, "header", header.type)(header)}
     </p>
   );
 
-  const detail_fx = (detail: supportedType) => JSON.stringify(header);
-  // dataTypes.detail[detail.type](detail);
+  const detail_fx = (detail: supportedType) =>
+    getForDataType(dataTypes, "detail", detail.type)(detail);
 
   return (
     <section className={index === 0 ? "content" : "content work-content"}>
@@ -173,7 +180,7 @@ const l1 = (title: string, detail: supportedType[], i: number) => {
   const [first, ...rest] = detail;
   const dataTypes: dtToJSX = {
     header: {
-      skill: (skil: skill) => l2({ title: skil.type }, skil, 0),
+      skills: (skil: skill) => l2({ title: skil.type }, skil, 0),
       default: (head: supportedType & dates) =>
         l2({ title, subtitle: head }, head, 0)
     },
@@ -183,42 +190,46 @@ const l1 = (title: string, detail: supportedType[], i: number) => {
       )
     }
   };
-  console.log(rest, { first });
 
   return (
     <Fragment key={i}>
-      {JSON.stringify(rest)}
+      {/* {JSON.stringify(rest)} */}
       {getForDataType(dataTypes, "header", first.type)(first)}
-      {/* {getForDataType(dataTypes, "details", rest[0].type)} */}
+      {rest.length && getForDataType(dataTypes, "details", rest[0].type)(rest)}
     </Fragment>
   );
 };
 
 function getForDataType(dataType: dtToJSX, presentation: string, type: string) {
-  console.log(type);
+  console.log();
 
   return dataType[presentation][type] || dataType[presentation].default;
 }
-
-const location_fx = ({
-  address,
-  postalCode,
-  city,
-  countryCode,
-  region
-}: location) => (
-  <>
-    <p>{address}</p>
-    <p>
-      {postalCode} {city}
-    </p>
-    <p>{region}</p>
-  </>
-);
-
 //page
 const resume = (header: frontMatter, detail: [string, supportedType[]][]) => {
   const header_fx = (header: frontMatter) => {
+    const dataType: dtToJSX = {
+      header: {
+        default: (s: string) => <>{s}</>
+      },
+      detail: {
+        profiles: (profiles: profile[]) => (
+          <div className="content-text profiles-listing">
+            <ul>
+              {profiles.map((p: profile, i) => (
+                <li key={i}>
+                  <a href={p.url} target="_blank">
+                    {p.network}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ),
+        location: location_fx,
+        default: (s: string) => <>{s}</>
+      }
+    };
     const { picture, label, name, ...rest } = header;
     return (
       <header>
@@ -239,7 +250,7 @@ const resume = (header: frontMatter, detail: [string, supportedType[]][]) => {
               <li key={i}>
                 <ul>
                   <li>{k}</li>
-                  <li>{v.toString()}</li>
+                  <li>{getForDataType(dataType, "detail", k)(v)}</li>
                 </ul>
               </li>
             ))}
@@ -254,8 +265,9 @@ const resume = (header: frontMatter, detail: [string, supportedType[]][]) => {
       <div className="content-wrapper">
         <section className="content">
           {detail.map(([k, v], i) => {
+            // console.log(l1(k, v, i));
+
             return l1(k, v, i);
-            JSON.stringify({ k, v });
           })}
         </section>
       </div>
@@ -300,7 +312,25 @@ export default () =>
       .map(
         ([k, vs]: [string, any]): [string, supportedType[]] => [
           k,
-          vs.map((v: any) => ({ type: k, ...v }))
+          vs.map((v: any) => ({ type: singular(k), ...v }))
         ]
       )
   );
+
+function location_fx({
+  address,
+  postalCode,
+  city,
+  countryCode,
+  region
+}: location) {
+  return (
+    <>
+      <p>{address}</p>
+      <p>
+        {postalCode} {city}
+      </p>
+      <p>{region}</p>
+    </>
+  );
+}
