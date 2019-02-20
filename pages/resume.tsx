@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import Head from "next/head";
 import Navigation from "../components/Navigation";
 import resumeData from "../static/resume.json";
-import { singular } from "pluralize";
+import { singular, plural } from "pluralize";
 type content = {
   skills: skill[];
   education: education[];
@@ -34,6 +34,7 @@ type location = {
 };
 type work = {
   type: "work";
+  title?: string;
   position: string;
   company: string;
   website?: string;
@@ -58,11 +59,7 @@ type frontMatter = {
   phone: string;
   website: string;
   location: location;
-  profiles: {
-    network: string;
-    username: string;
-    url: string;
-  }[];
+  profiles: profile[];
 };
 
 type profile = {
@@ -87,25 +84,43 @@ const l3 = (header: supportedType, detail: supportedType, index?: number) => {
       education: ({ institution }: education) => (
         <Fragment>{institution}</Fragment>
       ),
-      default: ({ position, company, website }: work) => (
-        <Fragment>
-          {position && <strong>{position}</strong> + " at "}
-          {company && website ? (
+      default: ({ position, company, website, title }: work) => {
+        const withTitle = (
+          <>
             <strong>
-              <a href={website}>{company}:</a>
+              <a href={website}>{title}:</a>
             </strong>
-          ) : (
-            <strong>{company}:</strong>
-          )}
-        </Fragment>
-      ),
-      skill: (x: skill) => <>{x.name}</>
+          </>
+        );
+        const withCompany = (
+          <Fragment>
+            {position && (
+              <>
+                <strong>{position}</strong> at
+              </>
+            )}{" "}
+            {company && website ? (
+              <strong>
+                <a href={website}>{company}:</a>
+              </strong>
+            ) : (
+              <strong>{company}:</strong>
+            )}
+          </Fragment>
+        );
+        return title ? withTitle : withCompany;
+      },
+      skill: (s: skill) => (
+        <>
+          {<strong>{s.name}</strong>}: {s.keywords && s.keywords.join(", ")}
+        </>
+      )
     },
     detail: {
       default: ({ summary, highlights }: work) => {
         const highlight = (h: string, i: number) => (
           <p key={i} className="highlight">
-            {h}
+            {h.charAt(0).toUpperCase() + h.slice(1)}
           </p>
         );
         return (
@@ -123,26 +138,27 @@ const l3 = (header: supportedType, detail: supportedType, index?: number) => {
           </i>
         </p>
       ),
-      skill: (s: skill) => <>{s.keywords && s.keywords.join(", ")}</>
+      skill: (s: skill) => <Fragment />
     }
   };
 
-  const header_fx = (header: supportedType, index?: number) => (
-    <p className="heading" style={index === 0 ? {} : { marginTop: "2.4em" }}>
-      {getForDataType(dataTypes, "header", header.type)(header)}
-    </p>
+  const header_fx = (header: supportedType, index?: number) => {
+    return (
+      <p className="heading" style={index !== 0 ? {} : { marginTop: "2.4em" }}>
+        {getForDataType(dataTypes, "header", header.type)(header)}
+      </p>
+    );
+  };
+
+  const detail_fx = (detail: supportedType) => (
+    <div>{getForDataType(dataTypes, "detail", detail.type)(detail)}</div>
   );
 
-  const detail_fx = (detail: supportedType) =>
-    getForDataType(dataTypes, "detail", detail.type)(detail);
-
   return (
-    <section className={index === 0 ? "content" : "content work-content"}>
-      <div className="row">
-        {header_fx(header, index)}
-        {detail_fx(detail)}
-      </div>
-    </section>
+    <div className={"content-text " + `${plural(header.type)}` + "-listing"}>
+      {header_fx(header, index)}
+      {detail_fx(detail)}
+    </div>
   );
 };
 
@@ -151,14 +167,13 @@ const l2 = (
   detail: supportedType,
   index: number
 ) => {
-  // if index === 0, header has title
   const header_fx = (
     { title, subtitle }: { title?: string; subtitle?: dates },
     index: number
   ) => (
     <div className="content-cat big-text">
       {title}
-      {subtitle && (
+      {subtitle && subtitle.startDate && (
         <p>
           {subtitle.startDate} to {subtitle.endDate || "today"}
         </p>
@@ -167,42 +182,39 @@ const l2 = (
   );
 
   return (
-    <div key={index} className="content-text work-listing education-listing">
+    <div className="row" key={index}>
       {header_fx(header, index)}
-      {l3(detail, detail, index)}
+      <div className="content-text work-listing education-listing">
+        {l3(detail, detail, index)}
+      </div>
     </div>
   );
 };
 
-//section
-//detail: []
 const l1 = (title: string, detail: supportedType[], i: number) => {
   const [first, ...rest] = detail;
   const dataTypes: dtToJSX = {
     header: {
-      skills: (skil: skill) => l2({ title: skil.type }, skil, 0),
+      skills: (skil: skill) => l2({ title: skil.type }, skil, i + 1),
       default: (head: supportedType & dates) =>
         l2({ title, subtitle: head }, head, 0)
     },
     details: {
       default: (rest: (supportedType & dates)[]) => (
-        <>{rest.map((d, i) => l2({ subtitle: d }, d, i))}</>
+        <>{rest.map((d, i) => l2({ subtitle: d }, d, i + 1))}</>
       )
     }
   };
 
   return (
-    <Fragment key={i}>
-      {/* {JSON.stringify(rest)} */}
+    <section className="content" key={i}>
       {getForDataType(dataTypes, "header", first.type)(first)}
       {rest.length && getForDataType(dataTypes, "details", rest[0].type)(rest)}
-    </Fragment>
+    </section>
   );
 };
 
 function getForDataType(dataType: dtToJSX, presentation: string, type: string) {
-  console.log();
-
   return dataType[presentation][type] || dataType[presentation].default;
 }
 //page
@@ -263,13 +275,9 @@ const resume = (header: frontMatter, detail: [string, supportedType[]][]) => {
   const detail_fx = (detail: [string, supportedType[]][]) => {
     return (
       <div className="content-wrapper">
-        <section className="content">
-          {detail.map(([k, v], i) => {
-            // console.log(l1(k, v, i));
-
-            return l1(k, v, i);
-          })}
-        </section>
+        {detail.map(([k, v], i) => {
+          return l1(k, v, i);
+        })}
       </div>
     );
   };
