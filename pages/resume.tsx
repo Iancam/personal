@@ -51,7 +51,7 @@ type education = {
 } & dates;
 
 type frontMatter = {
-  type: "basics";
+  type: "basics" | "contact";
   name: string;
   picture: string;
   label: string;
@@ -73,7 +73,7 @@ interface dtToJSX {
     [s: string]: (t: any) => JSX.Element;
   };
 }
-type supportedType = work | education | skill; //& { type: string };
+type supportedType = work | education | skill | frontMatter; //& { type: string };
 
 // Same level, different handlers based on data.
 // overload the function
@@ -114,7 +114,56 @@ const l3 = (header: supportedType, detail: supportedType, index?: number) => {
         <>
           {<strong>{s.name}</strong>}: {s.keywords && s.keywords.join(", ")}
         </>
-      )
+      ),
+      contact: (rest: frontMatter) => {
+        const dataType: dtToJSX = {
+          header: {
+            default: (s: string) => <>{s}</>
+          },
+          detail: {
+            profiles: (profiles: profile[]) => (
+              <div className="content-text profiles-listing">
+                <ul>
+                  {profiles.map((p: profile, i) => (
+                    <li key={i}>
+                      <a href={p.url} target="_blank">
+                        {p.network}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ),
+            location: ({
+              address,
+              postalCode,
+              city,
+              countryCode,
+              region
+            }: location) => {
+              return (
+                <>
+                  <p>{address}</p>
+                  <p>
+                    {postalCode} {city}
+                  </p>
+                  <p>{region}</p>
+                </>
+              );
+            },
+            default: (s: string) => <>{s}</>
+          }
+        };
+        return (
+          <>
+            {Object.entries(rest).map(([k, v], i) => (
+              <p className="work-listing">
+                {getForDataType(dataType, "detail", k)(v)}
+              </p>
+            ))}
+          </>
+        );
+      }
     },
     detail: {
       default: ({ summary, highlights }: work) => {
@@ -138,7 +187,8 @@ const l3 = (header: supportedType, detail: supportedType, index?: number) => {
           </i>
         </p>
       ),
-      skill: (s: skill) => <Fragment />
+      skill: (s: skill) => <Fragment />,
+      contact: c => <></>
     }
   };
 
@@ -209,7 +259,9 @@ const l1 = (title: string, detail: supportedType[], i: number) => {
   return (
     <section className="content" key={i}>
       {getForDataType(dataTypes, "header", first.type)(first)}
-      {rest.length && getForDataType(dataTypes, "details", rest[0].type)(rest)}
+      {rest.length
+        ? getForDataType(dataTypes, "details", rest[0].type)(rest)
+        : undefined}
     </section>
   );
 };
@@ -220,28 +272,6 @@ function getForDataType(dataType: dtToJSX, presentation: string, type: string) {
 //page
 const resume = (header: frontMatter, detail: [string, supportedType[]][]) => {
   const header_fx = (header: frontMatter) => {
-    const dataType: dtToJSX = {
-      header: {
-        default: (s: string) => <>{s}</>
-      },
-      detail: {
-        profiles: (profiles: profile[]) => (
-          <div className="content-text profiles-listing">
-            <ul>
-              {profiles.map((p: profile, i) => (
-                <li key={i}>
-                  <a href={p.url} target="_blank">
-                    {p.network}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ),
-        location: location_fx,
-        default: (s: string) => <>{s}</>
-      }
-    };
     const { picture, label, name, ...rest } = header;
     return (
       <header>
@@ -255,18 +285,6 @@ const resume = (header: frontMatter, detail: [string, supportedType[]][]) => {
             <p>{name}</p>
             <p className="subtitle">{label}</p>
           </div>
-        </div>
-        <div className="content-text">
-          <ul>
-            {Object.entries(rest).map(([k, v], i) => (
-              <li key={i}>
-                <ul>
-                  <li>{k}</li>
-                  <li>{getForDataType(dataType, "detail", k)(v)}</li>
-                </ul>
-              </li>
-            ))}
-          </ul>
         </div>
       </header>
     );
@@ -316,7 +334,10 @@ export default () =>
   resume(
     resumeData.basics as frontMatter,
     Object.entries(resumeData)
-      .filter(([k]) => k !== "basics")
+      .map(
+        ([k, v]: [string, any]): [string, supportedType[]] =>
+          k === "basics" ? ["contact", [v]] : [k, v]
+      )
       .map(
         ([k, vs]: [string, any]): [string, supportedType[]] => [
           k,
@@ -324,21 +345,3 @@ export default () =>
         ]
       )
   );
-
-function location_fx({
-  address,
-  postalCode,
-  city,
-  countryCode,
-  region
-}: location) {
-  return (
-    <>
-      <p>{address}</p>
-      <p>
-        {postalCode} {city}
-      </p>
-      <p>{region}</p>
-    </>
-  );
-}
