@@ -10,8 +10,10 @@ module.exports.groupsOf = function(num, list) {
 };
 
 module.exports.toList = function(items, handler, inline = true) {
-  return `<ul ${inline ? 'style="display: inline;"' : ""}>${items
-    .map((c, i) => `<li>${handler(c, i)}</li>`)
+  return `<ul ${inline ? 'style="list-style-type: none;"' : ""}>${items
+    .map(
+      (c, i) => `<li style="display: inline-block;"  x>${handler(c, i)}</li>`
+    )
     .join("\n")}</ul>`;
 };
 
