@@ -186,8 +186,10 @@ const resume = (
       <div className="resume-wrapper">
         <article className="paper">
           <Header_fx header={header} />
-          {ResumeSidebar(sidebar)}
-          {detail_fx(detail)}
+          <div className="flex_row">
+            {ResumeSidebar(sidebar)}
+            {detail_fx(detail)}
+          </div>
         </article>
       </div>
     </>

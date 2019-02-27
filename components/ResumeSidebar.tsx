@@ -49,7 +49,8 @@ const education_fx: headDetFunction = ({
   return { header, detail };
 };
 
-const contact_fx: headDetFunction = (contact: frontMatter) => {
+const contact_fx: headDetFunction = (contacts: frontMatter[]) => {
+  const contact = contacts[0];
   const header = <>{contact.type}</>;
   const detailMapper = {
     profiles: (profiles: profile[]) => (
@@ -86,11 +87,10 @@ const contact_fx: headDetFunction = (contact: frontMatter) => {
   };
   const detail = (
     <>
-      {Object.entries(contact[0]).map(([k, v], i) => {
+      {Object.entries(contact).map(([k, v], i) => {
         const element = getForDataType({ detail: detailMapper }, "detail", k)(
           v
         );
-        console.log(k, v);
 
         return <div className="work-listing">{element}</div>;
       })}
@@ -140,5 +140,5 @@ export default (props: [string, supportedType[]][]) => {
   });
   console.log(elems);
 
-  return <div className="sidenav content-cat">{elems}</div>;
+  return <div className="content-cat sidenav">{elems}</div>;
 };
