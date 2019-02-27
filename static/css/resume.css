@@ -151,7 +151,7 @@ body > div > article > div > section:last-child {
   display: table-cell;
 }
 
-.content-cat {
+(.content-cat {
   font-family: "Merriweather";
   font-variant: small-caps;
   font-weight: 300;
@@ -166,7 +166,7 @@ body > div > article > div > section:last-child {
 
   padding-left: 6.66%;
   width: 30%;
-}
+})
 
 .content-cat p {
   font-size: 0.55em;
@@ -353,4 +353,34 @@ div.content-text.skills-listing > p > {
   .education-listing > .highlight {
     margin-left: 30px;
   }
+}
+
+/* SIDEBAR */
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 30%; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
+.content-cat {
+  font-family: "Merriweather";
+  font-variant: small-caps;
+  font-weight: 300;
+  letter-spacing: 1px;
+
+  color: #212121;
+
+  font-size: 0.975em;
+
+  text-align: center;
+  vertical-align: middle;
+
+  padding-left: 6.66%;
+  width: 30%;
 }

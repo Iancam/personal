@@ -1,79 +1,23 @@
 // import Link from "next/link";
 import { Fragment } from "react";
-import Head from "next/head";
+
 import Navigation from "../components/Navigation";
 import resumeData from "../static/resume.json";
 import { singular, plural } from "pluralize";
-type content = {
-  skills: skill[];
-  education: education[];
-  work: work[];
-  projects: work[];
-};
-
-interface typed {
-  type: string;
-}
-type skill = {
-  type: "skill";
-  name: string;
-  level?: string;
-  keywords?: string[];
-};
-type dates = {
-  startDate: string;
-  endDate?: string;
-};
-type location = {
-  type: "location";
-  address: string;
-  postalCode: string;
-  city: string;
-  countryCode: string;
-  region: string;
-};
-type work = {
-  type: "work";
-  title?: string;
-  position: string;
-  company: string;
-  website?: string;
-  summary?: string;
-  highlights: string[];
-} & dates;
-
-type education = {
-  type: "education";
-  institution: string;
-  area: string;
-  studyType: string;
-  gpa?: number;
-} & dates;
-
-type frontMatter = {
-  type: "basics" | "contact";
-  name: string;
-  picture: string;
-  label: string;
-  email: string;
-  phone: string;
-  website: string;
-  location: location;
-  profiles: profile[];
-};
-
-type profile = {
-  network: string;
-  url: string;
-  username: string;
-};
-
-interface dtToJSX {
-  [s: string]: {
-    [s: string]: (t: any) => JSX.Element;
-  };
-}
-type supportedType = work | education | skill | frontMatter; //& { type: string };
+import {
+  supportedType,
+  dtToJSX,
+  work,
+  education,
+  skill,
+  dates,
+  frontMatter,
+  sidebarT
+} from "../components/resumeTypes";
+import _Head from "../components/_Head";
+import { getForDataType } from "../utility";
+import ResumeSidebar from "../components/ResumeSidebar";
+import { isArray } from "util";
 
 // Same level, different handlers based on data.
 // overload the function
@@ -81,9 +25,6 @@ type supportedType = work | education | skill | frontMatter; //& { type: string 
 const l3 = (header: supportedType, detail: supportedType, index?: number) => {
   const dataTypes: dtToJSX = {
     header: {
-      education: ({ institution }: education) => (
-        <Fragment>{institution}</Fragment>
-      ),
       default: ({ position, company, website, title }: work) => {
         const withTitle = (
           <>
@@ -109,64 +50,12 @@ const l3 = (header: supportedType, detail: supportedType, index?: number) => {
           </Fragment>
         );
         return title ? withTitle : withCompany;
-      },
-      skill: (s: skill) => (
-        <>
-          {<strong>{s.name}</strong>}: {s.keywords && s.keywords.join(", ")}
-        </>
-      ),
-      contact: (rest: frontMatter) => {
-        const dataType: dtToJSX = {
-          header: {
-            default: (s: string) => <>{s}</>
-          },
-          detail: {
-            profiles: (profiles: profile[]) => (
-              <div className="content-text profiles-listing">
-                <ul>
-                  {profiles.map((p: profile, i) => (
-                    <li key={i}>
-                      <a href={p.url} target="_blank">
-                        {p.network}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ),
-            location: ({
-              address,
-              postalCode,
-              city,
-              countryCode,
-              region
-            }: location) => {
-              return (
-                <>
-                  <p>{address}</p>
-                  <p>
-                    {postalCode} {city}
-                  </p>
-                  <p>{region}</p>
-                </>
-              );
-            },
-            default: (s: string) => <>{s}</>
-          }
-        };
-        return (
-          <>
-            {Object.entries(rest).map(([k, v], i) => (
-              <p className="work-listing">
-                {getForDataType(dataType, "detail", k)(v)}
-              </p>
-            ))}
-          </>
-        );
       }
     },
     detail: {
       default: ({ summary, highlights }: work) => {
+        !!!highlights ? console.log(detail) : "";
+
         const highlight = (h: string, i: number) => (
           <p key={i} className="highlight">
             {h.charAt(0).toUpperCase() + h.slice(1)}
@@ -178,17 +67,7 @@ const l3 = (header: supportedType, detail: supportedType, index?: number) => {
             {highlights.map(highlight)}
           </Fragment>
         );
-      },
-      education: ({ area, studyType, gpa }: education) => (
-        <p className="highlight">
-          {studyType}
-          <i>
-            {area} {gpa && gpa}
-          </i>
-        </p>
-      ),
-      skill: (s: skill) => <Fragment />,
-      contact: c => <></>
+      }
     }
   };
 
@@ -245,7 +124,6 @@ const l1 = (title: string, detail: supportedType[], i: number) => {
   const [first, ...rest] = detail;
   const dataTypes: dtToJSX = {
     header: {
-      skills: (skil: skill) => l2({ title: skil.type }, skil, i + 1),
       default: (head: supportedType & dates) =>
         l2({ title, subtitle: head }, head, 0)
     },
@@ -266,13 +144,14 @@ const l1 = (title: string, detail: supportedType[], i: number) => {
   );
 };
 
-function getForDataType(dataType: dtToJSX, presentation: string, type: string) {
-  return dataType[presentation][type] || dataType[presentation].default;
-}
 //page
-const resume = (header: frontMatter, detail: [string, supportedType[]][]) => {
-  const header_fx = (header: frontMatter) => {
-    const { picture, label, name, ...rest } = header;
+const resume = (
+  header: frontMatter,
+  detail: [string, supportedType[]][],
+  sidebar: [string, supportedType[]][]
+) => {
+  const Header_fx = ({ header }: { header: frontMatter }) => {
+    const { picture, label, name } = header;
     return (
       <header>
         <div className="header-content">
@@ -302,27 +181,12 @@ const resume = (header: frontMatter, detail: [string, supportedType[]][]) => {
 
   return (
     <>
-      <Head>
-        <title>{header.name}</title>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <link
-          href="http://fonts.googleapis.com/css?family=Merriweather:400,300,700"
-          rel="stylesheet"
-          type="text/css"
-        />
-        <link
-          href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600"
-          rel="stylesheet"
-          type="text/css"
-        />
-        <link href="/static/css/resume.css" rel="stylesheet" />
-        <link href="/static/css/print.css" media="print" />
-      </Head>
+      <_Head name={header.name} />
       <Navigation />
       <div className="resume-wrapper">
         <article className="paper">
-          {header_fx(header)}
+          <Header_fx header={header} />
+          {ResumeSidebar(sidebar)}
           {detail_fx(detail)}
         </article>
       </div>
@@ -330,18 +194,30 @@ const resume = (header: frontMatter, detail: [string, supportedType[]][]) => {
   );
 };
 
+const sidebarNames = new Set(["skills", "education", "contact", "basics"]);
+
+// clearly the following function could use a refactor.
+
 export default () =>
   resume(
     resumeData.basics as frontMatter,
     Object.entries(resumeData)
+      .filter(([k]: [string, any]) => !sidebarNames.has(k))
       .map(
-        ([k, v]: [string, any]): [string, supportedType[]] =>
-          k === "basics" ? ["contact", [v]] : [k, v]
-      )
+        ([k, vs]: [string, any]): [string, supportedType[]] => {
+          return [k, vs.map((v: any) => ({ type: singular(k), ...v }))];
+        }
+      ),
+    Object.entries(resumeData)
+      .filter(([k]: [string, any]) => sidebarNames.has(k))
       .map(
-        ([k, vs]: [string, any]): [string, supportedType[]] => [
-          k,
-          vs.map((v: any) => ({ type: singular(k), ...v }))
-        ]
+        ([k, vs]: [string, any]): [string, supportedType[]] => {
+          return [
+            k,
+            isArray(vs)
+              ? vs.map((v: any) => ({ type: singular(k), ...v }))
+              : [{ type: singular(k), ...vs }]
+          ];
+        }
       )
   );
