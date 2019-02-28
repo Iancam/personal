@@ -206,6 +206,10 @@ const sidebarNames = new Set(["skills", "education", "contact", "basics"]);
 
 // clearly the following function could use a refactor.
 
+const readables = {
+  basics: "contact"
+};
+
 export default () =>
   resume(
     resumeData.basics as frontMatter,
@@ -220,11 +224,15 @@ export default () =>
       .filter(([k]: [string, any]) => sidebarNames.has(k))
       .map(
         ([k, vs]: [string, any]): [string, supportedType[]] => {
+          const typeName = readables[k] || k;
           return [
             k,
             isArray(vs)
-              ? vs.map((v: any) => ({ type: singular(k), ...v }))
-              : [{ type: singular(k), ...vs }]
+              ? vs.map((v: any) => ({
+                  type: singular(typeName),
+                  ...v
+                }))
+              : [{ type: singular(typeName), ...vs }]
           ];
         }
       )

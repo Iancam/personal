@@ -2,7 +2,6 @@ import {
   skill,
   education,
   frontMatter,
-  dtToJSX,
   profile,
   location,
   supportedType
@@ -10,21 +9,22 @@ import {
 
 import { Fragment } from "react";
 import { getForDataType } from "../utility";
-import { AnyARecord } from "dns";
 import { isArray } from "util";
 
 // import Link from "next/link";
 
 const skill_fx: (props: any) => headDetComponent = ({
-  s,
+  type,
+  name,
+  keywords,
   ...props
-}: {
-  s: skill;
-}) => {
-  const header = <>{s.type}</>;
+}: skill) => {
+  const header = undefined;
+  console.log(type);
+
   const detail = (
     <>
-      {<strong>{s.name}</strong>}: {s.keywords && s.keywords.join(", ")}
+      {<strong>{name}</strong>}: {keywords && keywords.join(", ")}
     </>
   );
 
@@ -49,9 +49,8 @@ const education_fx: headDetFunction = ({
   return { header, detail };
 };
 
-const contact_fx: headDetFunction = (contacts: frontMatter[]) => {
-  const contact = contacts[0];
-  const header = <>{contact.type}</>;
+const contact_fx: headDetFunction = (contact: frontMatter) => {
+  const header = undefined;
   const detailMapper = {
     profiles: (profiles: profile[]) => (
       <div className="content-text profiles-listing">
@@ -92,20 +91,16 @@ const contact_fx: headDetFunction = (contacts: frontMatter[]) => {
           v
         );
 
-        return <div className="work-listing">{element}</div>;
+        return (
+          <div key={i} className="work-listing">
+            {element}
+          </div>
+        );
       })}
     </>
   );
   return { detail, header };
 };
-
-// type structure<T> = {
-//   header?: {
-//     title: () => string | JSX.Element;
-//     subtitle: () => string | JSX.Element;
-//   };
-//   detail?: structure<keyof T> | JSX.Element;
-// };
 
 type headDetComponent = {
   detail: JSX.Element;
@@ -120,7 +115,7 @@ type viewModel = {
 };
 
 const viewModel: viewModel = {
-  skills: (sks: skill[]) => sks.map((s, i) => skill_fx({ s, key: i })),
+  skills: skill_fx,
   education: education_fx,
   basics: contact_fx
 };
@@ -135,10 +130,13 @@ export default (props: [string, supportedType[]][]) => {
     );
   };
   const elems = props.map(([k, v], i) => {
-    const hedDet = viewModel[k](v);
-    return isArray(hedDet) ? hedDet.map(toElement) : toElement(hedDet);
+    const hedDet = isArray(v)
+      ? v.map((val, i) => viewModel[k]({ ...val, key: i }))
+      : viewModel[k](v);
+    const is_array = isArray(hedDet);
+
+    return is_array ? hedDet.map(toElement) : toElement(hedDet);
   });
-  console.log(elems);
 
   return <div className="content-cat sidenav">{elems}</div>;
 };
