@@ -280,11 +280,17 @@ div.content-text.work-listing.education-listing > p:nth-child(2) {
   border-left: 1px solid #e0e0e0;
 }
 
-.education-listing > .heading {
+.education-listing > .heading p {
   font-weight: 600;
-
+  display: flex;
   margin-top: 0.75em;
   margin-left: 2em;
+}
+
+.push_right {
+  flex: 1;
+  text-align: right;
+  white-space: nowrap;
 }
 
 .education-listing > .highlight {

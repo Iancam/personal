@@ -22,16 +22,21 @@ import { isArray } from "util";
 // Same level, different handlers based on data.
 // overload the function
 
-const l3 = (header: supportedType, detail: supportedType, index?: number) => {
+const l3 = (header: work, detail: work, index?: number) => {
   const dataTypes: dtToJSX = {
     header: {
-      default: ({ position, company, website, title }: work) => {
+      default: ({
+        position,
+        company,
+        website,
+        title,
+        startDate,
+        endDate
+      }: work & dates) => {
         const withTitle = (
-          <>
-            <strong>
-              <a href={website}>{title}:</a>
-            </strong>
-          </>
+          <strong>
+            <a href={website}>{title}:</a>
+          </strong>
         );
         const withCompany = (
           <Fragment>
@@ -49,7 +54,18 @@ const l3 = (header: supportedType, detail: supportedType, index?: number) => {
             )}
           </Fragment>
         );
-        return title ? withTitle : withCompany;
+        const withDates = startDate && (
+          <>
+            {startDate} to {endDate || "today"}
+          </>
+        );
+
+        return (
+          <>
+            {title ? withTitle : withCompany}{" "}
+            <span className={"push_right"}>{withDates}</span>
+          </>
+        );
       }
     },
     detail: {
@@ -93,25 +109,16 @@ const l3 = (header: supportedType, detail: supportedType, index?: number) => {
 
 const l2 = (
   header: { title?: string; subtitle?: dates },
-  detail: supportedType,
+  detail: work,
   index: number
 ) => {
   const header_fx = (
     { title, subtitle }: { title?: string; subtitle?: dates },
     index: number
-  ) => (
-    <div className="content-cat big-text">
-      {title}
-      {subtitle && subtitle.startDate && (
-        <p>
-          {subtitle.startDate} to {subtitle.endDate || "today"}
-        </p>
-      )}
-    </div>
-  );
+  ) => <div className="content-cat big-text">{title}</div>;
 
   return (
-    <div className="row" key={index}>
+    <div className="" key={index}>
       {header_fx(header, index)}
       <div className="content-text work-listing education-listing">
         {l3(detail, detail, index)}
@@ -120,15 +127,14 @@ const l2 = (
   );
 };
 
-const l1 = (title: string, detail: supportedType[], i: number) => {
+const l1 = (title: string, detail: work[], i: number) => {
   const [first, ...rest] = detail;
   const dataTypes: dtToJSX = {
     header: {
-      default: (head: supportedType & dates) =>
-        l2({ title, subtitle: head }, head, 0)
+      default: (head: work & dates) => l2({ title, subtitle: head }, head, 0)
     },
     details: {
-      default: (rest: (supportedType & dates)[]) => (
+      default: (rest: (work & dates)[]) => (
         <>{rest.map((d, i) => l2({ subtitle: d }, d, i + 1))}</>
       )
     }
@@ -147,7 +153,7 @@ const l1 = (title: string, detail: supportedType[], i: number) => {
 //page
 const resume = (
   header: frontMatter,
-  detail: [string, supportedType[]][],
+  detail: [string, work[]][],
   sidebar: [string, supportedType[]][]
 ) => {
   const Header_fx = ({ header }: { header: frontMatter }) => {
@@ -169,7 +175,7 @@ const resume = (
     );
   };
 
-  const detail_fx = (detail: [string, supportedType[]][]) => {
+  const detail_fx = (detail: [string, work[]][]) => {
     return (
       <div className="content-wrapper">
         {detail.map(([k, v], i) => {
@@ -206,7 +212,7 @@ export default () =>
     Object.entries(resumeData)
       .filter(([k]: [string, any]) => !sidebarNames.has(k))
       .map(
-        ([k, vs]: [string, any]): [string, supportedType[]] => {
+        ([k, vs]: [string, any]): [string, work[]] => {
           return [k, vs.map((v: any) => ({ type: singular(k), ...v }))];
         }
       ),
