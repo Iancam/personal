@@ -2,12 +2,10 @@
   "basics": {
     "name": "Ian Campbell",
     "label": "Full-Stack Developer",
-    "email": "ian.campbell.92@gmail.com",
     "phone": "+1.970.560.2564",
+    "email": "ian.campbell.92@gmail.com",
     "website": "ianlairdcampbell.com",
     "location": {
-      "address": "1230 Emerson St",
-      "postalCode": "CA 94301",
       "city": "Palo Alto",
       "countryCode": "US",
       "region": "California"

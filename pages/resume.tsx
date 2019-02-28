@@ -15,7 +15,7 @@ import {
   sidebarT
 } from "../components/resumeTypes";
 import _Head from "../components/_Head";
-import { getForDataType } from "../utility";
+import { getForDataType, titular } from "../utility";
 import ResumeSidebar from "../components/ResumeSidebar";
 import { isArray } from "util";
 
@@ -89,7 +89,7 @@ const l3 = (header: work, detail: work, index?: number) => {
 
   const header_fx = (header: supportedType, index?: number) => {
     return (
-      <p className="heading" style={index !== 0 ? {} : { marginTop: "2.4em" }}>
+      <p className="heading" style={index !== 0 ? {} : { marginTop: "1em" }}>
         {getForDataType(dataTypes, "header", header.type)(header)}
       </p>
     );
@@ -115,7 +115,7 @@ const l2 = (
   const header_fx = (
     { title, subtitle }: { title?: string; subtitle?: dates },
     index: number
-  ) => title && <div className="content-cat big-text">{title}</div>;
+  ) => title && <div className="content-cat big-text">{titular(title)}</div>;
 
   return (
     <div className="" key={index}>
@@ -156,8 +156,11 @@ const resume = (
   detail: [string, work[]][],
   sidebar: [string, supportedType[]][]
 ) => {
-  const Header_fx = ({ header }: { header: frontMatter }) => {
-    const { picture, label, name } = header;
+  const Header_fx = ({
+    header: { picture, label, name }
+  }: {
+    header: frontMatter;
+  }) => {
     return (
       <header>
         <div className="header-content">
@@ -167,7 +170,7 @@ const resume = (
             </div>
           )}
           <div className="header-text">
-            <p>{name}</p>
+            <p>{titular(name)}</p>
             <p className="subtitle">{label}</p>
           </div>
         </div>

@@ -40,7 +40,7 @@ const education_fx: headDetFunction = ({
   const header = titular(institution);
   const detail = (
     <p className="highlight">
-      {studyType}
+      {studyType}{" "}
       <i>
         {area} {gpa && gpa}
       </i>
@@ -51,6 +51,11 @@ const education_fx: headDetFunction = ({
 
 const contact_fx: headDetFunction = (contact: frontMatter) => {
   const header = titular(contact.type);
+  const link_fx = (s: string) => (
+    <p>
+      <a href={s}>{s}</a>
+    </p>
+  );
   const detailMapper = {
     profiles: (profiles: profile[]) => (
       <div className="content-text profiles-listing">
@@ -82,21 +87,25 @@ const contact_fx: headDetFunction = (contact: frontMatter) => {
         </>
       );
     },
-    default: (s: string) => <>{s}</>
+    website: link_fx,
+    email: link_fx,
+    default: (s: string) => <p>{s}</p>
   };
   const detail = (
     <>
       {Object.entries(contact)
         .filter(([k]) => k !== "type")
         .map(([k, v], i) => {
-          const element = getForDataType({ detail: detailMapper }, "detail", k)(
-            v
-          );
+          const element = v
+            ? getForDataType({ detail: detailMapper }, "detail", k)(v)
+            : undefined;
 
           return (
-            <div key={i} className="work-listing">
-              {element}
-            </div>
+            element && (
+              <div key={i} className="work-listing">
+                {element}
+              </div>
+            )
           );
         })}
     </>
@@ -125,15 +134,15 @@ const viewModel: viewModel = {
 export default (props: [string, supportedType[]][]) => {
   const toElement = ({ header, detail }: { [s: string]: JSX.Element }) => {
     return (
-      <>
+      <div className="work-listing">
         {header}
         {detail}
-      </>
+      </div>
     );
   };
   const elems = props.map(([k, v], i) => {
     const hedDet = isArray(v)
-      ? v.map((val, i) => viewModel[k]({ ...val, key: k }))
+      ? v.map((val, i) => viewModel[k]({ ...val, key: i }))
       : viewModel[k](v);
     console.log(hedDet);
 

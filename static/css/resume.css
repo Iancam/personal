@@ -74,6 +74,8 @@ header {
 .header-text {
   margin-top: 0.5em;
   margin-left: 1em;
+  font-size: 2em;
+  font-variant: small-caps;
 }
 
 header p {
@@ -176,7 +178,7 @@ body > div > article > div > section:last-child {
 }
 
 .content-text {
-  border-left: 1px solid #e0e0e0;
+  /* border-left: 1px solid #e0e0e0; */
   transition: border 0.66s ease-in;
 }
 
@@ -207,7 +209,7 @@ body > div > article > div > section:last-child {
   margin-top: 0.15em;
 
   width: 85%;
-  margin-left: 1.5em;
+  margin-left: 1em;
 }
 
 .content-text ul:last-child {
@@ -376,7 +378,7 @@ div.content-text.skills-listing > p > {
 .content-cat {
   font-family: "Merriweather";
   font-variant: small-caps;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 1px;
 
   color: #212121;
@@ -398,7 +400,6 @@ div.content-text.skills-listing > p > {
   text-transform: capitalize;
   display: inline-block;
   margin-top: 0.75em;
-  margin-bottom: 0.75em;
 }
 
 a {
@@ -409,6 +410,10 @@ a {
 .sidenav {
   height: 100%; /* Full-height: remove this if you want "auto" height */
   width: 20%; /* Set the width of the sidebar */
-  padding-top: 4em;
+  padding-top: 1.5em;
   flex-basis: 50%;
+}
+
+.sidenav > .work-listing > p {
+  font-size: 1em;
 }
