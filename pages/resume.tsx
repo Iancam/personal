@@ -42,9 +42,9 @@ const l3 = (header: work, detail: work, index?: number) => {
           <Fragment>
             {position && (
               <>
-                <strong>{position}</strong> at
+                <strong>{position}</strong> at{" "}
               </>
-            )}{" "}
+            )}
             {company && website ? (
               <strong>
                 <a href={website}>{company}:</a>
@@ -115,7 +115,7 @@ const l2 = (
   const header_fx = (
     { title, subtitle }: { title?: string; subtitle?: dates },
     index: number
-  ) => <div className="content-cat big-text">{title}</div>;
+  ) => title && <div className="content-cat big-text">{title}</div>;
 
   return (
     <div className="" key={index}>
@@ -225,14 +225,19 @@ export default () =>
       .map(
         ([k, vs]: [string, any]): [string, supportedType[]] => {
           const typeName = readables[k] || k;
+          const vals =
+            typeName === "contact"
+              ? { ...vs, label: undefined, name: undefined }
+              : vs;
+
           return [
             k,
-            isArray(vs)
-              ? vs.map((v: any) => ({
+            isArray(vals)
+              ? vals.map((v: any) => ({
                   type: singular(typeName),
                   ...v
                 }))
-              : [{ type: singular(typeName), ...vs }]
+              : [{ type: singular(typeName), ...vals }]
           ];
         }
       )

@@ -8,7 +8,7 @@ import {
 } from "./resumeTypes";
 
 import { Fragment } from "react";
-import { getForDataType } from "../utility";
+import { getForDataType, titular } from "../utility";
 import { isArray } from "util";
 
 // import Link from "next/link";
@@ -20,12 +20,12 @@ const skill_fx: (props: any) => headDetComponent = ({
   ...props
 }: skill) => {
   const header = undefined;
-  console.log(type);
 
   const detail = (
-    <>
-      {<strong>{name}</strong>}: {keywords && keywords.join(", ")}
-    </>
+    <p>
+      {name}:{" "}
+      <span className="skills-listing">{keywords && keywords.join(", ")}</span>
+    </p>
   );
 
   return { header, detail, ...props };
@@ -37,7 +37,7 @@ const education_fx: headDetFunction = ({
   gpa,
   institution
 }: education) => {
-  const header = <Fragment>{institution}</Fragment>;
+  const header = titular(institution);
   const detail = (
     <p className="highlight">
       {studyType}
@@ -50,7 +50,7 @@ const education_fx: headDetFunction = ({
 };
 
 const contact_fx: headDetFunction = (contact: frontMatter) => {
-  const header = undefined;
+  const header = titular(contact.type);
   const detailMapper = {
     profiles: (profiles: profile[]) => (
       <div className="content-text profiles-listing">
@@ -86,25 +86,27 @@ const contact_fx: headDetFunction = (contact: frontMatter) => {
   };
   const detail = (
     <>
-      {Object.entries(contact).map(([k, v], i) => {
-        const element = getForDataType({ detail: detailMapper }, "detail", k)(
-          v
-        );
+      {Object.entries(contact)
+        .filter(([k]) => k !== "type")
+        .map(([k, v], i) => {
+          const element = getForDataType({ detail: detailMapper }, "detail", k)(
+            v
+          );
 
-        return (
-          <div key={i} className="work-listing">
-            {element}
-          </div>
-        );
-      })}
+          return (
+            <div key={i} className="work-listing">
+              {element}
+            </div>
+          );
+        })}
     </>
   );
   return { detail, header };
 };
 
 type headDetComponent = {
-  detail: JSX.Element;
-  header: JSX.Element;
+  detail?: JSX.Element;
+  header?: JSX.Element;
 };
 // type headDetComponent = _headDetComponent;
 
@@ -131,11 +133,11 @@ export default (props: [string, supportedType[]][]) => {
   };
   const elems = props.map(([k, v], i) => {
     const hedDet = isArray(v)
-      ? v.map((val, i) => viewModel[k]({ ...val, key: i }))
+      ? v.map((val, i) => viewModel[k]({ ...val, key: k }))
       : viewModel[k](v);
-    const is_array = isArray(hedDet);
+    console.log(hedDet);
 
-    return is_array ? hedDet.map(toElement) : toElement(hedDet);
+    return isArray(hedDet) ? hedDet.map(toElement) : toElement(hedDet);
   });
 
   return <div className="content-cat sidenav">{elems}</div>;
