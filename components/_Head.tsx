@@ -16,6 +16,6 @@ export default ({ name }: { name: string }) => (
       type="text/css"
     />
     <link href="/static/css/resume.css" rel="stylesheet" />
-    <link href="/static/css/print.css" media="print" />
+    <link href="/static/css/print.css" rel="stylesheet" media="print" />
   </Head>
 );

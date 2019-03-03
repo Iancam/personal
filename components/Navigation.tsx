@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export default () => (
-  <div>
+  <div className="noprint">
     <Link href="/about">
       <a>About Page</a>
     </Link>

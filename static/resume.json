@@ -47,9 +47,9 @@
       "company": "Wyzant",
       "website": "https://wyzant.com",
       "highlights": [
-        "Achieved a minimum grade of 90% for all school assignments",
-        "Systematized detection and correction of top 3 student motivation challenges",
-        "Created curricula for first-time programmers across many popular programming languages"
+        "Ensured students achieved a minimum grade of 90% for all school assignments",
+        "Taught a student to navigate the observer pattern in her JavaScript application, and integrate it with an express.js server in the background",
+        "Designed assignments that taught the value of abstraction to first-time programmers in python and javascript by reducing their code rewrites by a third"
       ],
       "startDate": "2014-9-20"
     },

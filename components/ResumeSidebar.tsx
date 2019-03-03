@@ -51,23 +51,21 @@ const education_fx: headDetFunction = ({
 
 const contact_fx: headDetFunction = (contact: frontMatter) => {
   const header = titular(contact.type);
-  const link_fx = (s: string) => (
+  const link_fx = (s: string, url?: string) => (
     <p>
-      <a href={s}>{s}</a>
+      <a href={url || s}>{s}</a>
     </p>
   );
   const detailMapper = {
     profiles: (profiles: profile[]) => (
-      <div className="content-text profiles-listing">
-        <ul>
-          {profiles.map((p: profile, i) => (
-            <li key={i}>
-              <a href={p.url} target="_blank">
-                {p.network}
-              </a>
-            </li>
-          ))}
-        </ul>
+      <div className="content-text work-listing">
+        {profiles.map((p: profile, i) => (
+          <p>
+            <a key={i} href={p.url} target="_blank">
+              {p.network}
+            </a>
+          </p>
+        ))}
       </div>
     ),
     location: ({
