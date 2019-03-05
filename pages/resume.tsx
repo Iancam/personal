@@ -15,7 +15,7 @@ import {
   sidebarT
 } from "../components/resumeTypes";
 import _Head from "../components/_Head";
-import { getForDataType, titular } from "../utility";
+import { getForDataType, titular, dateToMonthAndYear } from "../utility";
 import ResumeSidebar from "../components/ResumeSidebar";
 import { isArray } from "util";
 
@@ -34,21 +34,14 @@ const l3 = (header: work, detail: work, index?: number) => {
         endDate
       }: work & dates) => {
         const withTitle = (
-          <strong>
-            <a href={website}>{title}:</a>
-          </strong>
+          <strong>{website ? <a href={website}>{title}</a> : title}</strong>
         );
+
         const withCompany = (
           <Fragment>
-            {position && (
-              <>
-                <strong>{position}</strong> at{" "}
-              </>
-            )}
-            {company && website ? (
-              <strong>
-                <a href={website}>{company}:</a>
-              </strong>
+            <strong>{position}</strong> at{" "}
+            {website ? (
+              <a href={website}>{company}:</a>
             ) : (
               <strong>{company}:</strong>
             )}
@@ -56,7 +49,8 @@ const l3 = (header: work, detail: work, index?: number) => {
         );
         const withDates = startDate && (
           <>
-            {startDate} to {endDate || "today"}
+            {dateToMonthAndYear(startDate)} to{" "}
+            {dateToMonthAndYear(endDate) || "today"}
           </>
         );
 

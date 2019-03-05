@@ -6,13 +6,8 @@ import {
   location,
   supportedType
 } from "./resumeTypes";
-
-import { Fragment } from "react";
 import { getForDataType, titular } from "../utility";
-import { isArray } from "util";
 import { readables } from "../pages/resume";
-
-// import Link from "next/link";
 
 const skill_fx: (props: any) => headDetComponent = ({
   type,
@@ -62,8 +57,8 @@ const contact_fx: headDetFunction = (contact: frontMatter) => {
     profiles: (profiles: profile[]) => (
       <div className="content-text work-listing">
         {profiles.map((p: profile, i) => (
-          <p>
-            <a key={i} href={p.url} target="_blank">
+          <p key={i}>
+            <a href={p.url} target="_blank">
               {p.network}
             </a>
           </p>
@@ -132,9 +127,12 @@ const viewModel: viewModel = {
 };
 
 export default (props: [string, supportedType[]][]) => {
-  const toElement = ({ header, detail }: { [s: string]: JSX.Element }) => {
+  const toElement = (
+    { header, detail }: { [s: string]: JSX.Element },
+    i: number
+  ) => {
     return (
-      <div className="work-listing">
+      <div className="work-listing" key={i}>
         {header}
         {detail}
       </div>
@@ -145,12 +143,12 @@ export default (props: [string, supportedType[]][]) => {
       return [
         k,
         v
-          .map((val, i) => viewModel[k]({ ...val, key: i }))
-          .map(el => toElement(el))
+          .map(val => viewModel[k]({ ...val, key: i }))
+          .map((el, i) => toElement(el, i))
       ];
     })
-    .map(([k, el]) => (
-      <div>
+    .map(([k, el], i) => (
+      <div key={i}>
         {" "}
         <span className="titular big-text"> {readables[k] || k}</span>
         {el}

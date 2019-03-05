@@ -4,7 +4,7 @@
     "label": "Full-Stack Developer",
     "phone": "+1.970.560.2564",
     "email": "ian.campbell.92@gmail.com",
-    "website": "ianlairdcampbell.com",
+    "website": "https://ianlairdcampbell.com",
     "location": {
       "city": "Palo Alto",
       "countryCode": "US",
@@ -68,7 +68,7 @@
     },
     {
       "position": "Software Architect",
-      "company": "Mahindra Genze",
+      "company": "Genze",
       "website": "https://www.genze.com/",
       "highlights": [
         "Architected and documented a redesign of the central REST API which supported external dealers and fleet managers and internal sales and support operations",
@@ -81,7 +81,7 @@
     },
     {
       "position": "Software Development Intern",
-      "company": "Mahindra Genze",
+      "company": "Genze",
       "highlights": [
         "Created a prototype bike sharing IOS app, which was used to secure google as a potential customer",
         "Rapidly designed and implemented an interactive information display used at Costco road-shows across the country."
