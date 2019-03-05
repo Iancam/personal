@@ -209,7 +209,7 @@ const sidebarNames = new Set(["skills", "education", "contact", "basics"]);
 
 // clearly the following function could use a refactor.
 
-const readables = {
+export const readables = {
   basics: "contact"
 };
 

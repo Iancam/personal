@@ -10,6 +10,7 @@ import {
 import { Fragment } from "react";
 import { getForDataType, titular } from "../utility";
 import { isArray } from "util";
+import { readables } from "../pages/resume";
 
 // import Link from "next/link";
 
@@ -37,9 +38,10 @@ const education_fx: headDetFunction = ({
   gpa,
   institution
 }: education) => {
-  const header = titular(institution);
+  const header = titular(institution, "l4_header");
+
   const detail = (
-    <p className="highlight">
+    <p>
       {studyType}{" "}
       <i>
         {area} {gpa && gpa}
@@ -50,7 +52,7 @@ const education_fx: headDetFunction = ({
 };
 
 const contact_fx: headDetFunction = (contact: frontMatter) => {
-  const header = titular(contact.type);
+  const header = undefined;
   const link_fx = (s: string, url?: string) => (
     <p>
       <a href={url || s}>{s}</a>
@@ -138,14 +140,22 @@ export default (props: [string, supportedType[]][]) => {
       </div>
     );
   };
-  const elems = props.map(([k, v], i) => {
-    const hedDet = isArray(v)
-      ? v.map((val, i) => viewModel[k]({ ...val, key: i }))
-      : viewModel[k](v);
-    console.log(hedDet);
-
-    return isArray(hedDet) ? hedDet.map(toElement) : toElement(hedDet);
-  });
+  const elems = props
+    .map(([k, v], i) => {
+      return [
+        k,
+        v
+          .map((val, i) => viewModel[k]({ ...val, key: i }))
+          .map(el => toElement(el))
+      ];
+    })
+    .map(([k, el]) => (
+      <div>
+        {" "}
+        <span className="titular big-text"> {readables[k] || k}</span>
+        {el}
+      </div>
+    ));
 
   return <div className="content-cat sidenav">{elems}</div>;
 };

@@ -256,11 +256,11 @@ div.content-text.work-listing.education-listing > p > strong > a {
 
 .work-listing p {
   font-family: "Open Sans";
-  font-size: 0.7em;
+  font-size: 0.8em;
 
   color: #424242;
 
-  margin-left: 2em;
+  margin-left: 1.9em;
   margin-top: 0.45em;
   margin-bottom: 0.45em;
 }
@@ -393,7 +393,7 @@ div.content-text.skills-listing > p > {
 }
 
 .skills-listing {
-  font-size: 0.7em;
+  font-size: 0.95em;
 }
 
 .titular {
@@ -416,4 +416,14 @@ a {
 
 .sidenav > .work-listing > p {
   font-size: 1em;
+}
+
+.l4_header {
+  font-size: 0.9em;
+  font-weight: 100;
+}
+
+section.content .content-cat.big-text {
+  padding-left: 0px;
+  margin-left: 1.5em;
 }

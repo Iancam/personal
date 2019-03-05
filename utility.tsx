@@ -8,6 +8,7 @@ export function getForDataType(
   return dataType[presentation][type] || dataType[presentation].default;
 }
 
-export function titular(s: string) {
-  return <span className="titular big-text"> {s} </span>;
+export function titular(s: string, extras: string) {
+  const cname = "titular big-text " + (extras || "");
+  return <span className={cname}> {s} </span>;
 }
