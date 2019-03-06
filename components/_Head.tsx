@@ -1,8 +1,16 @@
 import Head from "next/head";
 
-export default ({ name }: { name: string }) => (
+export default ({
+  name,
+  children
+}: {
+  name: string;
+  children: JSX.Element;
+}) => (
   <Head>
     <title>{name}</title>
+    <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
+
     <meta charSet="utf-8" />
     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     <link
@@ -15,7 +23,10 @@ export default ({ name }: { name: string }) => (
       rel="stylesheet"
       type="text/css"
     />
-    <link href="/static/css/resume.css" rel="stylesheet" />
-    <link href="/static/css/print.css" rel="stylesheet" media="print" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"
+    />
+    {children}
   </Head>
 );

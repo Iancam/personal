@@ -14,7 +14,7 @@ import {
   frontMatter,
   sidebarT
 } from "../components/resumeTypes";
-import _Head from "../components/_Head";
+import _Head from "../components/ResumeHead";
 import { getForDataType, titular, dateToMonthAndYear } from "../utility";
 import ResumeSidebar from "../components/ResumeSidebar";
 import { isArray } from "util";
@@ -156,7 +156,7 @@ const resume = (
     header: frontMatter;
   }) => {
     return (
-      <header>
+      <header className="tc">
         <div className="header-content">
           {picture && (
             <div className="header-pic">
@@ -185,7 +185,7 @@ const resume = (
   return (
     <>
       <_Head name={header.name} />
-      <Navigation />
+      <Navigation left shrink />
       <div className="resume-wrapper">
         <article className="paper">
           <Header_fx header={header} />
