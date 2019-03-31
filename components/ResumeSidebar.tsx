@@ -82,7 +82,7 @@ const contact_fx: headDetFunction = (contact: frontMatter) => {
         </>
       );
     },
-    website: link_fx,
+    website: url => link_fx("ianlairdcampbell.com", url),
     email: link_fx,
     default: (s: string) => <p>{s}</p>
   };
