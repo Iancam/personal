@@ -4,10 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@atomist/tree-path": "^1.0.3",
     "@types/next": "^8.0.1",
     "@types/pluralize": "^0.0.29",
+    "@types/prettier": "^1.16.1",
     "@types/react": "^16.8.3",
     "@zeit/next-typescript": "^1.1.1",
+    "lodash": "^4.17.11",
     "next": "^7.0.2",
     "pluralize": "^7.0.0",
     "prettier": "^1.16.4",

@@ -14,7 +14,7 @@ import {
   frontMatter,
   sidebarT
 } from "../components/resumeTypes";
-import _Head from "../components/_Head";
+import _Head from "../components/ResumeHead";
 import { getForDataType, titular, dateToMonthAndYear } from "../utility";
 import ResumeSidebar from "../components/ResumeSidebar";
 import { isArray } from "util";
@@ -64,8 +64,6 @@ const l3 = (header: work, detail: work, index?: number) => {
     },
     detail: {
       default: ({ summary, highlights }: work) => {
-        !!!highlights ? console.log(detail) : "";
-
         const highlight = (h: string, i: number) => (
           <p key={i} className="highlight">
             {h.charAt(0).toUpperCase() + h.slice(1)}
@@ -157,7 +155,7 @@ const resume = (
     header: frontMatter;
   }) => {
     return (
-      <header>
+      <header className="tc">
         <div className="header-content">
           {picture && (
             <div className="header-pic">
@@ -186,7 +184,7 @@ const resume = (
   return (
     <>
       <_Head name={header.name} />
-      <Navigation />
+      <Navigation left shrink />
       <div className="resume-wrapper">
         <article className="paper">
           <Header_fx header={header} />
@@ -204,7 +202,7 @@ const sidebarNames = new Set(["skills", "education", "contact", "basics"]);
 
 // clearly the following function could use a refactor.
 
-export const readables = {
+export const readables: { [name: string]: string } = {
   basics: "contact"
 };
 

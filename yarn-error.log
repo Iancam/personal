@@ -1,25 +1,30 @@
 Arguments: 
-  /usr/local/Cellar/node/11.8.0/bin/node /usr/local/Cellar/yarn/1.13.0/libexec/bin/yarn.js dev
+  /usr/local/Cellar/node/11.11.0/bin/node /usr/local/Cellar/yarn/1.15.2/libexec/bin/yarn.js add @atomist/tree-path-ts
 
 PATH: 
-  /Users/iancampbell/.rvm/gems/ruby-2.4.1/bin:/Users/iancampbell/.rvm/gems/ruby-2.4.1@global/bin:/Users/iancampbell/.rvm/rubies/ruby-2.4.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/iancampbell/.rvm/bin
+  /Users/iancampbell/.rvm/gems/ruby-2.4.1/bin:/Users/iancampbell/.rvm/gems/ruby-2.4.1@global/bin:/Users/iancampbell/.rvm/rubies/ruby-2.4.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/iancampbell/.go/bin:/usr/local/opt/go/libexec/bin:/Users/iancampbell/.rvm/bin
 
 Yarn version: 
-  1.13.0
+  1.15.2
 
 Node version: 
-  11.8.0
+  11.11.0
 
 Platform: 
   darwin x64
 
 Trace: 
-  SyntaxError: /Users/iancampbell/Developer/personal/package.json: Unexpected token { in JSON at position 187
-      at JSON.parse (<anonymous>)
-      at /usr/local/Cellar/yarn/1.13.0/libexec/lib/cli.js:1625:59
-      at Generator.next (<anonymous>)
-      at step (/usr/local/Cellar/yarn/1.13.0/libexec/lib/cli.js:304:30)
-      at /usr/local/Cellar/yarn/1.13.0/libexec/lib/cli.js:315:13
+  Error: https://registry.yarnpkg.com/@atomist%2ftree-path-ts: Not found
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:66058:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:129541:22)
+      at Request.emit (events.js:197:13)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:130513:10)
+      at Request.emit (events.js:197:13)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:130435:12)
+      at Object.onceWrapper (events.js:285:13)
+      at IncomingMessage.emit (events.js:202:15)
+      at endReadableNT (_stream_readable.js:1132:12)
+      at processTicksAndRejections (internal/process/next_tick.js:76:17)
 
 npm manifest: 
   {
@@ -28,16 +33,21 @@ npm manifest:
     "main": "index.js",
     "license": "MIT",
     "dependencies": {
+      "@types/next": "^8.0.1",
+      "@types/pluralize": "^0.0.29",
+      "@types/react": "^16.8.3",
+      "@zeit/next-typescript": "^1.1.1",
+      "lodash": "^4.17.11",
       "next": "^7.0.2",
+      "pluralize": "^7.0.0",
+      "prettier": "^1.16.4",
       "react": "^16.7.0",
       "react-dom": "^16.7.0"
-    }
-    {
-      "scripts": {
-        "dev": "next",
-        "build": "next build",
-        "start": "next start"
-      }
+    },
+    "scripts": {
+      "dev": "next",
+      "build": "next build",
+      "start": "next start"
     }
   }
 
@@ -384,6 +394,13 @@ Lockfile:
     dependencies:
       "@babel/helper-plugin-utils" "^7.0.0"
   
+  "@babel/plugin-syntax-typescript@^7.2.0":
+    version "7.3.3"
+    resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-typescript/-/plugin-syntax-typescript-7.3.3.tgz#a7cc3f66119a9f7ebe2de5383cce193473d65991"
+    integrity sha512-dGwbSMA1YhVS8+31CnPR7LB4pcbrzcV99wQzby4uAfrkZPYZlQ7ImwdpzLqi6Z6IL02b8IAL379CaMwo0x5Lag==
+    dependencies:
+      "@babel/helper-plugin-utils" "^7.0.0"
+  
   "@babel/plugin-transform-arrow-functions@^7.0.0":
     version "7.2.0"
     resolved "https://registry.yarnpkg.com/@babel/plugin-transform-arrow-functions/-/plugin-transform-arrow-functions-7.2.0.tgz#9aeafbe4d6ffc6563bf8f8372091628f00779550"
@@ -631,6 +648,14 @@ Lockfile:
     dependencies:
       "@babel/helper-plugin-utils" "^7.0.0"
   
+  "@babel/plugin-transform-typescript@^7.3.2":
+    version "7.3.2"
+    resolved "https://registry.yarnpkg.com/@babel/plugin-transform-typescript/-/plugin-transform-typescript-7.3.2.tgz#59a7227163e55738842f043d9e5bd7c040447d96"
+    integrity sha512-Pvco0x0ZSCnexJnshMfaibQ5hnK8aUHSvjCQhC1JR8eeg+iBwt0AtCO7gWxJ358zZevuf9wPSO5rv+WJcbHPXQ==
+    dependencies:
+      "@babel/helper-plugin-utils" "^7.0.0"
+      "@babel/plugin-syntax-typescript" "^7.2.0"
+  
   "@babel/plugin-transform-unicode-regex@^7.0.0":
     version "7.2.0"
     resolved "https://registry.yarnpkg.com/@babel/plugin-transform-unicode-regex/-/plugin-transform-unicode-regex-7.2.0.tgz#4eb8db16f972f8abb5062c161b8b115546ade08b"
@@ -698,6 +723,14 @@ Lockfile:
       "@babel/plugin-transform-react-jsx-self" "^7.0.0"
       "@babel/plugin-transform-react-jsx-source" "^7.0.0"
   
+  "@babel/preset-typescript@^7.0.0":
+    version "7.3.3"
+    resolved "https://registry.yarnpkg.com/@babel/preset-typescript/-/preset-typescript-7.3.3.tgz#88669911053fa16b2b276ea2ede2ca603b3f307a"
+    integrity sha512-mzMVuIP4lqtn4du2ynEfdO0+RYcslwrZiJHXu4MGaC1ctJiW2fyaeDrtjJGs7R/KebZ1sgowcIoWf4uRpEfKEg==
+    dependencies:
+      "@babel/helper-plugin-utils" "^7.0.0"
+      "@babel/plugin-transform-typescript" "^7.3.2"
+  
   "@babel/runtime-corejs2@7.0.0":
     version "7.0.0"
     resolved "https://registry.yarnpkg.com/@babel/runtime-corejs2/-/runtime-corejs2-7.0.0.tgz#786711ee099c2c2af7875638866c1259eff30a8c"
@@ -754,6 +787,91 @@ Lockfile:
       esutils "^2.0.2"
       lodash "^4.17.10"
       to-fast-properties "^2.0.0"
+  
+  "@types/anymatch@*":
+    version "1.3.1"
+    resolved "https://registry.yarnpkg.com/@types/anymatch/-/anymatch-1.3.1.tgz#336badc1beecb9dacc38bea2cf32adf627a8421a"
+    integrity sha512-/+CRPXpBDpo2RK9C68N3b2cOvO0Cf5B9aPijHsoDQTHivnGSObdOF2BRQOYjojWTDy6nQvMjmqRXIxH55VjxxA==
+  
+  "@types/next-server@*":
+    version "7.0.4"
+    resolved "https://registry.yarnpkg.com/@types/next-server/-/next-server-7.0.4.tgz#69b5e340a923bc7e8ad9228cf4e057eaed955a98"
+    integrity sha512-WFgM4EU24HIwE9HLub4vJYHdv+0BcdYXsV5TwSz4cjJR/WGOAalgaW/JhiQi4CPFmbluJWOB+JixnZRA07ONfw==
+    dependencies:
+      "@types/node" "*"
+      "@types/react" "*"
+      "@types/react-loadable" "*"
+  
+  "@types/next@^8.0.1":
+    version "8.0.1"
+    resolved "https://registry.yarnpkg.com/@types/next/-/next-8.0.1.tgz#d19731594215e09a8db1ca0b8862d5308707d46a"
+    integrity sha512-BYfeuN7Uy+kuCODrVRfLurWEoU0AR9Esfct18OeJMIqAfmk4d8SH47b7FxrvdeZiRDvKfpD4Ft/Z7ZGI6ErvDg==
+    dependencies:
+      "@types/next-server" "*"
+      "@types/node" "*"
+      "@types/node-fetch" "*"
+      "@types/react" "*"
+  
+  "@types/node-fetch@*":
+    version "2.1.6"
+    resolved "https://registry.yarnpkg.com/@types/node-fetch/-/node-fetch-2.1.6.tgz#4326288b49f352a142f03c63526ebce0f4c50877"
+    integrity sha512-Hv1jgh3pfpUEl2F2mqUd1AfLSk1YbUCeBJFaP36t7esAO617dErqdxWb5cdG2NfJGOofkmBW36fdx0dVewxDRg==
+    dependencies:
+      "@types/node" "*"
+  
+  "@types/node@*":
+    version "11.9.4"
+    resolved "https://registry.yarnpkg.com/@types/node/-/node-11.9.4.tgz#ceb0048a546db453f6248f2d1d95e937a6f00a14"
+    integrity sha512-Zl8dGvAcEmadgs1tmSPcvwzO1YRsz38bVJQvH1RvRqSR9/5n61Q1ktcDL0ht3FXWR+ZpVmXVwN1LuH4Ax23NsA==
+  
+  "@types/pluralize@^0.0.29":
+    version "0.0.29"
+    resolved "https://registry.yarnpkg.com/@types/pluralize/-/pluralize-0.0.29.tgz#6ffa33ed1fc8813c469b859681d09707eb40d03c"
+    integrity sha512-BYOID+l2Aco2nBik+iYS4SZX0Lf20KPILP5RGmM1IgzdwNdTs0eebiFriOPcej1sX9mLnSoiNte5zcFxssgpGA==
+  
+  "@types/prop-types@*":
+    version "15.5.9"
+    resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.5.9.tgz#f2d14df87b0739041bc53a7d75e3d77d726a3ec0"
+    integrity sha512-Nha5b+jmBI271jdTMwrHiNXM+DvThjHOfyZtMX9kj/c/LUj2xiLHsG/1L3tJ8DjAoQN48cHwUwtqBotjyXaSdQ==
+  
+  "@types/react-loadable@*":
+    version "5.5.0"
+    resolved "https://registry.yarnpkg.com/@types/react-loadable/-/react-loadable-5.5.0.tgz#7a878408ad940250aeb91d77d2b54a18f3c7c946"
+    integrity sha512-evH/O6Wytz6lSmi36YL7YHnFc46zRPSA8+XNtTXI4D7A/CP7OVwcWbHjb2yGbh/jDxxhnTwIVO/PeqDXtUegnQ==
+    dependencies:
+      "@types/react" "*"
+      "@types/webpack" "*"
+  
+  "@types/react@*", "@types/react@^16.8.3":
+    version "16.8.3"
+    resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.3.tgz#7b67956f682bea30a5a09b3242c0784ff196c848"
+    integrity sha512-PjPocAxL9SNLjYMP4dfOShW/rj9FDBJGu3JFRt0zEYf77xfihB6fq8zfDpMrV6s82KnAi7F1OEe5OsQX25Ybdw==
+    dependencies:
+      "@types/prop-types" "*"
+      csstype "^2.2.0"
+  
+  "@types/tapable@*":
+    version "1.0.4"
+    resolved "https://registry.yarnpkg.com/@types/tapable/-/tapable-1.0.4.tgz#b4ffc7dc97b498c969b360a41eee247f82616370"
+    integrity sha512-78AdXtlhpCHT0K3EytMpn4JNxaf5tbqbLcbIRoQIHzpTIyjpxLQKRoxU55ujBXAtg3Nl2h/XWvfDa9dsMOd0pQ==
+  
+  "@types/uglify-js@*":
+    version "3.0.4"
+    resolved "https://registry.yarnpkg.com/@types/uglify-js/-/uglify-js-3.0.4.tgz#96beae23df6f561862a830b4288a49e86baac082"
+    integrity sha512-SudIN9TRJ+v8g5pTG8RRCqfqTMNqgWCKKd3vtynhGzkIIjxaicNAMuY5TRadJ6tzDu3Dotf3ngaMILtmOdmWEQ==
+    dependencies:
+      source-map "^0.6.1"
+  
+  "@types/webpack@*":
+    version "4.4.24"
+    resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-4.4.24.tgz#75bc301176066f566ec54151b6101c2b45abb8b2"
+    integrity sha512-yg99CjvB7xZ/iuHrsZ7dkGKoq/FRDzqLzAxKh2EmTem6FWjzrty4FqCqBYuX5z+MFwSaaQGDAX4Q9HQkLjGLnQ==
+    dependencies:
+      "@types/anymatch" "*"
+      "@types/node" "*"
+      "@types/tapable" "*"
+      "@types/uglify-js" "*"
+      source-map "^0.6.0"
   
   "@webassemblyjs/ast@1.7.8":
     version "1.7.8"
@@ -907,6 +1025,13 @@ Lockfile:
     version "4.2.1"
     resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.1.tgz#5c85d662f76fa1d34575766c5dcd6615abcd30d8"
     integrity sha512-FZdkNBDqBRHKQ2MEbSC17xnPFOhZxeJ2YGSfr2BKf3sujG49Qe3bB+rGCwQfIaA7WHnGeGkSijX4FuBCdrzW/g==
+  
+  "@zeit/next-typescript@^1.1.1":
+    version "1.1.1"
+    resolved "https://registry.yarnpkg.com/@zeit/next-typescript/-/next-typescript-1.1.1.tgz#0b0ddfbb13ca04cde52ac2718473f1b9c40ba0ee"
+    integrity sha512-EUcHCASftz1Bc80djkf3cKJrFgvFQyODOH1kty7ShVLLdXMaZpRLj+z7RxrCoNo1bP06w0vtXEDU0cKa0HmGgg==
+    dependencies:
+      "@babel/preset-typescript" "^7.0.0"
   
   abbrev@1:
     version "1.1.1"
@@ -1667,6 +1792,11 @@ Lockfile:
       public-encrypt "^4.0.0"
       randombytes "^2.0.0"
       randomfill "^1.0.3"
+  
+  csstype@^2.2.0:
+    version "2.6.2"
+    resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.2.tgz#3043d5e065454579afc7478a18de41909c8a2f01"
+    integrity sha512-Rl7PvTae0pflc1YtxtKbiSqq20Ts6vpIYOD5WBafl4y123DyHUeLrRdQP66sQW8/6gmX8jrYJLXwNeMqYVJcow==
   
   cyclist@~0.2.2:
     version "0.2.2"
@@ -2787,7 +2917,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
     integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
   
-  lodash@^4.17.10, lodash@^4.17.4, lodash@^4.17.5:
+  lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.4, lodash@^4.17.5:
     version "4.17.11"
     resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
     integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
@@ -3505,10 +3635,20 @@ Lockfile:
     dependencies:
       find-up "^3.0.0"
   
+  pluralize@^7.0.0:
+    version "7.0.0"
+    resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-7.0.0.tgz#298b89df8b93b0221dbf421ad2b1b1ea23fc6777"
+    integrity sha512-ARhBOdzS3e41FbkW/XWrTEtukqqLoK5+Z/4UeDaLuSW+39JPeFgs4gCGqsrJHVZX0fUrx//4OF0K1CUGwlIFow==
+  
   posix-character-classes@^0.1.0:
     version "0.1.1"
     resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
     integrity sha1-AerA/jta9xoqbAL+q7jB/vfgDqs=
+  
+  prettier@^1.16.4:
+    version "1.16.4"
+    resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.16.4.tgz#73e37e73e018ad2db9c76742e2647e21790c9717"
+    integrity sha512-ZzWuos7TI5CKUeQAtFd6Zhm2s6EpAD/ZLApIhsF9pRvRtM1RFo61dM/4MSRUA0SuLugA/zgrZD8m0BaY46Og7g==
   
   pretty-time@^1.1.0:
     version "1.1.0"

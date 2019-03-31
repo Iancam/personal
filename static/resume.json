@@ -58,10 +58,10 @@
       "company": "Tunxis Booking",
       "website": "https://www.tunxisgolf.com/",
       "highlights": [
-        "eliminated developer-facing redux reducers and low-level network requests by standardizing redux actions, and creating a reducer factory",
-        "streamlined development cycles by introducing scrum with burndown charts",
-        "designed and implemented company's RESTful api with rails",
-        "delivered a React SPA front-end based on UI mockups"
+        "Designed and implemented a RESTful API to handle inventory and capture customer lifecycle data for a country-wide network of golf courses using Ruby on Rails",
+        "Delivered a React application connecting to a custom API, based on shifting requirements in high fidelity Invision mockups over 7 months",
+        "Standardized write actions and separated them from business logic, reducing redux boilerplate code by a factor of 7-30 per data-store entity, resulting in consistent enforcement of conventions for component/data-store and network/data-store interfaces (redux actions), smaller bug and test surface area, and an increase in developer productivity",
+        "Streamlined development cycles and team communication with a distributed team in 3 timezones by introducing and maintaining Kanban boards with burndown charts, and Scrum-style scheduling"
       ],
       "startDate": "2017-10-1",
       "endDate": "2018-7-1"
@@ -71,10 +71,9 @@
       "company": "Genze",
       "website": "https://www.genze.com/",
       "highlights": [
-        "Architected and documented a redesign of the central REST API which supported external dealers and fleet managers and internal sales and support operations",
-        "Enabled business operations through a redesign of the administration component of the internal website",
-        "Improved system capacity for high throughput data by transitioning to a microservice architecture, leveraging an open source API gateway service, and a column-store database",
-        "Optimized the existing mobile app API for network latency, reducing the number of network calls"
+        "Architected and documented a redesign of the central API to use REST, allowing external dealers and fleet managers to create their own apps with an industry standard interface",
+        "Improved system capacity for high throughput vehicle data by a factor of 10 by transitioning to a microservice architecture that leveraged an open source API gateway service and a column-store database",
+        "Enabled use of standard server and web browser caching mechanisms for all API requests, providing cache hits on 10 out of 13 endpoints and eliminating redundant network requests for historical vehicle stream data"
       ],
       "startDate": "2016-9-15",
       "endDate": "2016-12-19"
@@ -84,8 +83,8 @@
       "website": "https://www.genze.com/",
       "company": "Genze",
       "highlights": [
-        "Created a prototype bike sharing IOS app, which was used to secure google as a potential customer",
-        "Rapidly designed and implemented an interactive information display used at Costco road-shows across the country."
+        "Designed a bike sharing iOS prototype on a team of 3 interns, revealing the potential for a small software development team in California. Prototype was presented to Google and Stanford",
+        "Over one week, designed and implemented an interactive information display used at Costco road-shows across the country"
       ],
       "startDate": "2016-6-16",
       "endDate": "2016-9-15"

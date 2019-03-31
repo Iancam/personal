@@ -1,6 +1,6 @@
 body,
 html {
-  padding-top: 2.5em;
+  /* padding-top: 2.5em; */
   margin: 0;
   background-color: #fafafa;
 }
@@ -24,12 +24,6 @@ html {
 }
 
 /* Header */
-
-header {
-  width: 100%;
-  vertical-align: middle;
-  text-align: center;
-}
 
 .header-content {
   display: inline-block;
