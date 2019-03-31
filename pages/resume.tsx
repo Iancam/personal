@@ -122,7 +122,8 @@ const l2 = (
 };
 
 const l1 = (title: string, detail: work[], i: number) => {
-  const [first, ...rest] = detail;
+  const [first, ...rest] = detail.filter(d => !d.ignore);
+
   const dataTypes: dtToJSX = {
     header: {
       default: (head: work & dates) => l2({ title, subtitle: head }, head, 0)
@@ -218,7 +219,9 @@ export default () =>
         }
       ),
     Object.entries(resumeData)
-      .filter(([k]: [string, any]) => sidebarNames.has(k))
+      .filter(([k]: [string, any]) => {
+        return sidebarNames.has(k);
+      })
       .map(
         ([k, vs]: [string, any]): [string, supportedType[]] => {
           const typeName = readables[k] || k;

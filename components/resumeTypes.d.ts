@@ -24,6 +24,7 @@ export type location = {
   region: string;
 };
 export type work = {
+  ignore: boolean;
   type: "work";
   title?: string;
   position: string;
