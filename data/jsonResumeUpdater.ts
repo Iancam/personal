@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync } from "fs";
 import { flatten, keyBy } from "lodash";
-import {} from "prettier";
+import { format } from "prettier";
 // import tp from "@atomist/tree-path";
 // import { symbol } from "prop-types";
 import { isArray } from "util";
@@ -73,4 +73,4 @@ const merger = () => {
 
 const stuff = evalPath(searchSpaces, old, merger());
 
-console.log(PrJSON.stringify(stuff));
+console.log(format(JSON.stringify(stuff), { parser: "json" }));
