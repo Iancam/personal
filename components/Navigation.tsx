@@ -8,8 +8,8 @@ export default ({
   links = navLinks
 }: {
   links?: string[];
-  left: boolean;
-  shrink: boolean;
+  left?: boolean;
+  shrink?: boolean;
 }) => (
   <div className="noprint">
     <header

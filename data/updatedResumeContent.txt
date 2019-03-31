@@ -1,0 +1,34 @@
+
+Private Tutor for Computer Science
+Taught abstraction to first-time programmers in Python and JavaScript by refactoring old code, and using the more general code in new projects
+Taught students to implement the observer pattern in their JavaScript application, and integrate it with an Express.js server in the background in 2 months
+Taught the deployment of Apache and Express.js servers on AWS ec2, and the design of flexible, RESTful API endpoints for prototype projects, reducing development times by days for adult students on tight deadlines
+
+Full-Stack Developer
+Designed and implemented a RESTful API to handle inventory and capture customer lifecycle data for a country-wide network of golf courses using Ruby on Rails
+Delivered a React application connecting to a custom API, based on shifting requirements in high fidelity Invision mockups over 7 months
+Standardized write actions and separated them from business logic, reducing redux boilerplate code by a factor of 7-30 per data-store entity, resulting in consistent enforcement of conventions for component/data-store and network/data-store interfaces (redux actions), smaller bug and test surface area, and an increase in developer productivity
+Streamlined development cycles and team communication with a distributed team in 3 timezones by introducing and maintaining Kanban boards with burndown charts, and Scrum-style scheduling
+
+Software Architect
+Architected and documented a redesign of the central API to use REST, allowing external dealers and fleet managers to create their own apps with an industry standard interface
+Improved system capacity for high throughput vehicle data by a factor of 10 by transitioning to a microservice architecture that leveraged an open source API gateway service and a column-store database
+Enabled use of standard server and web browser caching mechanisms for all API requests, providing cache hits on 10 out of 13 endpoints and eliminating redundant network requests for historical vehicle stream data
+
+Software Development Intern
+Designed a bike sharing iOS prototype on a team of 3 interns, revealing the potential for a small software development team in California. Prototype was presented to Google and Stanford
+Over one week, designed and implemented an interactive information display used at Costco road-shows across the country
+
+Codocil
+Productivity tool that shaves minutes off of daily start-up time for JavaScript projects, getting the user to a functioning project in one CLI command instead of 17
+Reduces distraction and frustration when opening projects with complicated initiation sequences. 
+Recognizes NPM projects by default, opening them in Visual Studio Code and iTerm, with panels for the server and Git 
+
+Sales Distribution App: Curriculum Associates
+Written with React, Node.js, Ruby on Rails libraries
+Implemented a prototype interface for sales representatives to describe end-user data for customer provisioning
+
+Food Management App
+Developed a food management app for a dormitory using Node.js, Express.js, and MongoDB on a team of 3 students
+Designed the product using A/B testing and user interviews for guidance, while iterating weekly based on feedback
+Features included browsing, requesting new items, and suggestions for recipes based on the contents of the pantry

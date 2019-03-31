@@ -8,12 +8,12 @@ export function getForDataType(
   return dataType[presentation][type] || dataType[presentation].default;
 }
 
-export function titular(s: string, extras: string) {
+export function titular(s: string, extras?: string) {
   const cname = "titular big-text " + (extras || "");
   return <span className={cname}> {s} </span>;
 }
 
-export function dateToMonthAndYear(date: string, small = true) {
+export function dateToMonthAndYear(date?: string, small = true) {
   if (!date) {
     return date;
   }
