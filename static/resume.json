@@ -95,23 +95,36 @@
       "title": "Codocil",
       "website": "https://www.npmjs.com/package/codocil",
       "highlights": [
-        "productivity tool that shaves minutes off of daily start-up time for JavaScript projects.",
-        "Create a default codocil project, and in one command, open a server and git window in iterm and the given project in vscode."
+        "Productivity tool that shaves minutes off of daily start-up time for JavaScript projects, getting the user to a functioning project in one CLI command instead of 17",
+        "Reduces distraction and frustration when opening projects with complicated initiation sequences",
+        "Recognizes NPM projects by default, opening them in Visual Studio Code and iTerm, with panels for the server and Git"
       ],
       "startDate": "2018-12-20"
     },
     {
+      "ignore": true,
       "title": "Sales Distribution App",
       "website": null,
       "highlights": [
         "Written with React, Node.js, Ruby on Rails libraries",
         "Collaborated with Curriculum Associates Sales Operations Team to create a web-based tool",
-        "Designed to collect and export product end user data used for sales reporting from sales representatives and customers"
+        "Implemented a prototype interface for sales representatives to describe end-user data for customer provisioning"
       ],
       "startDate": "2016-2-20",
       "endDate": "2016-3-15"
     },
     {
+      "title": "Biocomputational Data Analyst",
+      "website": "https://bmcmedgenomics.biomedcentral.com/articles/10.1186/s12920-018-0439-6",
+      "startDate": "2016-1-3",
+      "endDate": "2018-4-2",
+      "highlights": [
+        "Eliminated the potential for human errors and enabled the small project budget to support a 14-fold increase in dataset size and a related increase in the statistical power of the findings by identifying a bottleneck in variant filtering, then researching and implementing its automation with Python Pandas",
+        "Discovered 2 candidate genetic targets of drug refractory dilated cardiomyopathy as well as their proposed mechanism of dysfunction as well as dietary and pharmaceutical interventions for the targets, and a biomarker for early detection of the disease"
+      ]
+    },
+    {
+      "ignore": true,
       "title": "Food Management App",
       "highlights": [
         "Developed a food management app for a dormitory using Node.js, Express.js, and Mongodb on a team of 3",
