@@ -21,7 +21,6 @@ function flexGrid({ defaultItemWidth, items }: GridParams) {
 }
 
 export default () => (
-  // { header, summary }
   <>
     <_Head name={header} />
     <div className="avenir">

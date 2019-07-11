@@ -20,7 +20,6 @@ import ResumeSidebar from "../components/ResumeSidebar";
 import { isArray } from "util";
 
 // Same level, different handlers based on data.
-// overload the function
 
 const l3 = (header: work, detail: work, index?: number) => {
   const dataTypes: dtToJSX = {
@@ -50,7 +49,7 @@ const l3 = (header: work, detail: work, index?: number) => {
         const withDates = startDate && (
           <>
             {dateToMonthAndYear(startDate)} to{" "}
-            {dateToMonthAndYear(endDate) || "today"}
+            {dateToMonthAndYear(endDate) || "Present"}
           </>
         );
 

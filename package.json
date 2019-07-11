@@ -10,12 +10,14 @@
     "@types/prettier": "^1.16.1",
     "@types/react": "^16.8.3",
     "@zeit/next-typescript": "^1.1.1",
+    "gray-matter": "^4.0.2",
     "lodash": "^4.17.11",
     "next": "^7.0.2",
     "pluralize": "^7.0.0",
     "prettier": "^1.16.4",
     "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "react-dom": "^16.7.0",
+    "react-markdown": "^4.1.0"
   },
   "scripts": {
     "dev": "next",

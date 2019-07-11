@@ -55,7 +55,7 @@ const contact_fx: headDetFunction = (contact: frontMatter) => {
   );
   const detailMapper = {
     profiles: (profiles: profile[]) => (
-      <div className="content-text work-listing">
+      <div className="content-text">
         {profiles.map((p: profile, i) => (
           <p key={i}>
             <a href={p.url} target="_blank">
@@ -97,7 +97,7 @@ const contact_fx: headDetFunction = (contact: frontMatter) => {
 
           return (
             element && (
-              <div key={i} className="work-listing">
+              <div style={{ overflowWrap: "break-word" }} key={i}>
                 {element}
               </div>
             )
@@ -132,7 +132,7 @@ export default (props: [string, supportedType[]][]) => {
     i: number
   ) => {
     return (
-      <div className="work-listing" key={i}>
+      <div key={i}>
         {header}
         {detail}
       </div>

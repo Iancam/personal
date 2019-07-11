@@ -4,19 +4,21 @@ const navLinks = ["projects", "blog", "about"];
 
 export default ({
   left,
+  noPrint,
   shrink,
   links = navLinks
 }: {
   links?: string[];
+  noPrint?: boolean;
   left?: boolean;
   shrink?: boolean;
 }) => (
-  <div className="noprint">
+  <div className={noPrint ? "noprint" : undefined}>
     <header
       className={
         (!left ? "w-100 " : "") +
-        (!shrink ? "ph4-m ph5-l" : "") +
-        "bg-black-80 fixed ph3 pv2 pv3-ns"
+        (!shrink ? "ph4-m ph5-l " : "") +
+        "bg-black-80 fixed ph3 pv2 pv3-ns top-0"
       }
     >
       <nav className="f6 fw6 ttu tracked">
