@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Navigation from "../components/Navigation";
-import _Head from "../components/_Head";
+import Navigation from "../src/components/Navigation";
+import _Head from "../src/components/_Head";
 const Index = () => (
   <>
     <_Head name={"Home"} />

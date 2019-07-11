@@ -1,9 +1,14 @@
 import Post, { post } from "./Post";
+// import Navigation from "../src/components/Navigation";
 import matter from "gray-matter";
-import ReactMarkdown from "react-markdown";
+// import ReactMarkdown from "react-markdown";
+import { getPosts } from "../src/utils";
 
 export interface BlogProps {
-  posts: post[];
+  posts: {
+    document: matter.GrayMatterFile<string>;
+    slug: string;
+  }[];
 }
 
 type initialPropsParams = {
@@ -20,21 +25,19 @@ interface NextSFC<T> extends React.SFC<T> {
 }
 
 const Blog: NextSFC<BlogProps> = ({ posts }) => {
+  console.log(posts);
+
   return (
     <>
-      {posts.map(p => (
-        <Post {...p} />
+      {posts.map((p, i) => (
+        <Post {...p.document} key={i} />
       ))}
     </>
   );
 };
 
-Blog.getInitialProps = async ({ query }) => {
-  const post = await import(`../posts/${query.id}.md`);
-  const document = matter(post.default);
-  return {
-    ...document
-  };
+Blog.getInitialProps = async ctx => {
+  return { posts: await getPosts() };
 };
 
 export default Blog;

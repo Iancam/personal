@@ -1,7 +1,7 @@
 // import Link from "next/link";
 import { Fragment } from "react";
 
-import Navigation from "../components/Navigation";
+import Navigation from "../src/../src/components/Navigation";
 import resumeData from "../static/resume.json";
 import { singular, plural } from "pluralize";
 import {
@@ -13,10 +13,10 @@ import {
   dates,
   frontMatter,
   sidebarT
-} from "../components/resumeTypes";
-import _Head from "../components/ResumeHead";
+} from "../src/components/resumeTypes";
+import _Head from "../src/components/ResumeHead";
 import { getForDataType, titular, dateToMonthAndYear } from "../utility";
-import ResumeSidebar from "../components/ResumeSidebar";
+import ResumeSidebar from "../src/components/ResumeSidebar";
 import { isArray } from "util";
 
 // Same level, different handlers based on data.
