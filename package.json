@@ -13,8 +13,9 @@
     "@zeit/next-typescript": "^1.1.1",
     "gray-matter": "^4.0.2",
     "lodash": "^4.17.11",
-    "next": "^7.0.2",
-    "pluralize": "^7.0.0",
+    "next": "^9.0.1",
+    "next-routes": "^1.4.2",
+    "pluralize": "^8.0.0",
     "prettier": "^1.16.4",
     "raw-loader": "^3.0.0",
     "react": "^16.7.0",
@@ -25,5 +26,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start"
+  },
+  "devDependencies": {
+    "typescript": "^3.5.3"
   }
 }

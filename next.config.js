@@ -1,5 +1,4 @@
-const withTypescript = require("@zeit/next-typescript");
-module.exports = withTypescript({
+module.exports = {
   webpack: config => {
     config.module.rules.push({
       test: /\.md$/,
@@ -7,4 +6,4 @@ module.exports = withTypescript({
     });
     return config;
   }
-});
+};

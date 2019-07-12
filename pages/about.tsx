@@ -1,11 +1,7 @@
-import Link from "next/link";
 import _Head from "../src/components/_Head";
 import Navigation from "../src/components/Navigation";
-
-type Grid = Element;
-
+import Link from "next/link";
 type Tach_range = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
-
 type GridParams = { defaultItemWidth: Tach_range; items: JSX.Element[] };
 
 function flexGrid({ defaultItemWidth, items }: GridParams) {

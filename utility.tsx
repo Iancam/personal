@@ -1,4 +1,4 @@
-import { dtToJSX } from "./../src/components/resumeTypes";
+import { dtToJSX } from "./src/components/resumeTypes";
 
 export function getForDataType(
   dataType: dtToJSX,
