@@ -45,13 +45,10 @@ export default () => (
   </>
 );
 
-const header = "about Ian";
-const summary = `
-My fundamental drive is probably a certain kind of curiousity.
- Scientists discover things that lead them more questions. That doesn't seem like the right kind of knowledge.
-  I want to discover things that explain more of the world. `;
+const header = "Attention is Fascinating  .";
+const summary = `What are the right questions and how do we ensure they are asked?`;
 const detail = {
-  header: "1-pager",
+  header: "Resume",
   link: "resume",
-  detail: "formal page of stuff I've done professionally"
+  detail: ""
 };
