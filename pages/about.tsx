@@ -33,7 +33,7 @@ export default () => (
         <section className="flex justify-center">
           <Link href={detail.link}>
             <a className="link dim light-blue flex justify-center">
-              <div className="fw3 f3 light-blue-70 w-30 tc">
+              <div className="fw3 f3 light-blue-70 bl bw2 pl4 ml6 tc">
                 <h1>{detail.header}</h1>
                 <p>{detail.detail}</p>
               </div>
@@ -45,7 +45,7 @@ export default () => (
   </>
 );
 
-const header = "Attention is Fascinating  .";
+const header = "Attention is Fascinating.";
 const summary = `What are the right questions and how do we ensure they are asked?`;
 const detail = {
   header: "Resume",
